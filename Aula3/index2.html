@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscrição SENAI - Desenvolvimento de Sistemas</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #00b7ff56;">
+    <form action="#" method="post">
+        <h1>Inscrição - Desenvolvimento de Sistemas</h1><br><br>
+
+        <label for="nome">Nome completo:</label><br>
+        <input type="text" name="Nome" placeholder="Digite seu nome" required><br><br>
+
+        <label for="email">E-mail:</label><br>
+        <input type="email" name="Email" placeholder="Digite seu e-mail" required><br><br>
+
+        <label for="telefone">Telefone:</label><br>
+        <input type="tel" name="Telefone" placeholder="Digite seu telefone"><br><br>
+
+        <label for="whatsapp">WhatsApp/Celular:</label><br>
+        <input type="tel" name="WhatsApp" placeholder="Digite seu WhatsApp"><br><br>
+
+        <label for="idade">Idade:</label><br>
+        <input type="number" name="Idade" placeholder="Digite sua idade" min="14" max="100"><br><br>
+
+        <label for="cpf">CPF:</label><br>
+        <input type="text" name="CPF" placeholder="Digite seu CPF" maxlength="14"><br><br>
+
+        <label for="rg">RG:</label><br>
+        <input type="text" name="RG" placeholder="Digite seu RG" maxlength="12"><br><br>
+
+        <label for="endereco">Endereço:</label><br>
+        <input type="text" name="Endereco" placeholder="Digite seu endereço"><br><br>
+
+        <label for="numero">Número:</label><br>
+        <input type="number" name="Numero" placeholder="Digite seu número"><br><br>
+
+        <label for="complemento">Complemento:</label><br>
+        <input type="text" name="Complemento" placeholder="Complemento"><br><br>
+
+        <label for="bairro">Bairro:</label><br>
+        <input type="text" name="Bairro" placeholder="Digite seu bairro"><br><br>
+
+        <label for="cidade">Cidade:</label><br>
+        <input type="text" name="Cidade" placeholder="Digite sua cidade"><br><br>
+
+        <label for="estado">Estado (UF):</label><br>
+        <select name="Estado" id="Estado">
+            <option value="">Selecione</option>
+            <option value="AC">AC</option>
+            <option value="AL">AL</option>
+            <option value="AP">AP</option>
+            <option value="AM">AM</option>
+            <option value="BA">BA</option>
+            <option value="CE">CE</option>
+            <option value="DF">DF</option>
+            <option value="ES">ES</option>
+            <option value="GO">GO</option>
+            <option value="MA">MA</option>
+            <option value="MT">MT</option>
+            <option value="MS">MS</option>
+            <option value="MG">MG</option>
+            <option value="PA">PA</option>
+            <option value="PB">PB</option>
+            <option value="PR">PR</option>
+            <option value="PE">PE</option>
+            <option value="PI">PI</option>
+            <option value="RJ">RJ</option>
+            <option value="RN">RN</option>
+            <option value="RS">RS</option>
+            <option value="RO">RO</option>
+            <option value="RR">RR</option>
+            <option value="SC">SC</option>
+            <option value="SP">SP</option>
+            <option value="SE">SE</option>
+            <option value="TO">TO</option>
+        </select><br><br>
+
+        <label for="cep">CEP:</label><br>
+        <input type="text" name="CEP" placeholder="Digite seu CEP" maxlength="9"><br><br>
+
+        <!-- Gênero usando Radio -->
+        <label>Gênero:</label><br>
+        <input type="radio" name="Genero" value="Feminino" id="feminino">
+        <label for="feminino">Feminino</label><br>
+
+        <input type="radio" name="Genero" value="Masculino" id="masculino">
+        <label for="masculino">Masculino</label><br>
+
+        <input type="radio" name="Genero" value="Outro" id="outro">
+        <label for="outro">Outro</label><br><br>
+
+        <label for="estadocivil">Estado Civil:</label><br>
+        <select name="EstadoCivil" id="EstadoCivil">
+            <option value="">Selecione</option>
+            <option value="Solteiro">Solteiro(a)</option>
+            <option value="Casado">Casado(a)</option>
+            <option value="Divorciado">Divorciado(a)</option>
+            <option value="Estavel">União Estável</option>
+        </select><br><br>
+
+        <!-- Turno usando Radio -->
+        <label>Turno desejado:</label><br>
+        <input type="radio" name="Turno" value="Manhã" id="manha">
+        <label for="manha">Manhã</label><br>
+
+        <input type="radio" name="Turno" value="Tarde" id="tarde">
+        <label for="tarde">Tarde</label><br>
+
+        <input type="radio" name="Turno" value="Noite" id="noite">
+        <label for="noite">Noite</label><br><br>
+
+        <label for="arquivo">Anexar documentos:</label><br>
+        <input type="file" name="arquivo"><br><br>
+
+        <button type="submit" id="enviar">Enviar</button>
+        <button type="reset" id="cancelar">Cancelar</button><br><br>
+
+        <p>Já fez inscrição? <a href="login.html">Acesse seu login</a></p>
+    </form>
+</body>
+</html>
+
+
+
