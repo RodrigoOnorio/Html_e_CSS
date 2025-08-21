@@ -117,7 +117,7 @@ footer { text-align:center; background:#1a0a0a; padding:40px; font-size:0.95em; 
 </head>
 <body>
 
-<button class="toggle-theme" onclick="toggleTheme()">🌙 Modo Escuro</button>
+<button class="toggle-theme" onclick="toggleTheme()">☀️ Modo Claro</button>
 
 <header>
   <h1>Tougen Anki</h1>
@@ -203,11 +203,11 @@ function toggleTheme() {
   if(darkMode){
     document.body.style.background="var(--bg-light)";
     document.body.style.color="var(--text-light)";
-    document.querySelector('.toggle-theme').innerText='☀️ Modo Claro';
+    document.querySelector('.toggle-theme').innerText='🌙 Modo Escuro';
   }else{
     document.body.style.background="var(--bg-dark)";
     document.body.style.color="var(--text-dark)";
-    document.querySelector('.toggle-theme').innerText='🌙 Modo Escuro';
+    document.querySelector('.toggle-theme').innerText='☀️ Modo Claro';
   }
   darkMode=!darkMode;
 }
