@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clã dos Rapazes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0a192f;
+      --bg-light: #f4f9ff;
+      --primary: #1e90ff;
+      --secondary: #00bfff;
+      --accent: #ff4d6d;
+      --text-dark: #f1f1f1;
+      --text-light: #1a1a1a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-dark);
+      overflow-x: hidden;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    /* Fundo com partículas animadas */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: radial-gradient(circle at 20% 20%, rgba(0,191,255,0.15), transparent),
+                  radial-gradient(circle at 80% 80%, rgba(30,144,255,0.15), transparent);
+      animation: floatbg 12s infinite alternate ease-in-out;
+      z-index: -1;
+    }
+    @keyframes floatbg {
+      0% { transform: scale(1) translateY(0px); }
+      100% { transform: scale(1.1) translateY(20px); }
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      padding: 80px 20px;
+      text-align: center;
+      color: white;
+      border-bottom-left-radius: 60px;
+      border-bottom-right-radius: 60px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+      animation: fadeDown 1s ease;
+    }
+    header h1 { font-size: 3.5em; font-weight: 700; }
+    header p { margin-top: 10px; font-size: 1.3em; opacity: 0.9; }
+
+    /* Navbar */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 35px;
+      padding: 20px;
+      background: rgba(0,0,0,0.7);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      animation: fadeDown 1.2s ease;
+    }
+    nav a {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1em;
+      position: relative;
+      transition: 0.3s;
+    }
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background: var(--secondary);
+      transition: width 0.3s;
+    }
+    nav a:hover::after { width: 100%; }
+
+    /* Sections */
+    section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: auto;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+    section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    section h2 {
+      font-size: 2.2em;
+      margin-bottom: 25px;
+      text-align: center;
+      color: var(--secondary);
+      text-shadow: 0 0 10px rgba(0,191,255,0.4);
+    }
+
+    /* Cards glassmorphism */
+    .card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(12px);
+      padding: 30px;
+      border-radius: 18px;
+      margin-bottom: 25px;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+      transition: 0.3s;
+    }
+    .card:hover { transform: translateY(-8px) scale(1.02); }
+
+    /* Botões animados */
+    .cta-buttons {
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+      margin: 35px 0;
+    }
+    .cta-buttons button {
+      padding: 15px 28px;
+      border-radius: 14px;
+      border: none;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      font-weight: bold;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 6px 18px rgba(30,144,255,0.5);
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-buttons button::before {
+      content: "";
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: rgba(255,255,255,0.2);
+      transition: left 0.4s;
+    }
+    .cta-buttons button:hover::before { left: 0; }
+    .cta-buttons button:hover { transform: translateY(-4px); }
+
+    /* Ranking */
+    .ranking ol {
+      list-style: none;
+      padding: 0;
+    }
+    .ranking li {
+      font-size: 1.3em;
+      margin: 14px 0;
+      background: rgba(0,191,255,0.1);
+      padding: 14px 22px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: 0.3s;
+    }
+    .ranking li:hover { transform: scale(1.05); background: rgba(0,191,255,0.2); }
+
+    /* Decks com efeito flip */
+    .deck-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+    .deck {
+      perspective: 1000px;
+    }
+    .deck-inner {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      transform-style: preserve-3d;
+      transition: transform 0.8s;
+    }
+    .deck:hover .deck-inner { transform: rotateY(180deg); }
+    .deck-front, .deck-back {
+      position: absolute;
+      width: 100%; height: 100%;
+      backface-visibility: hidden;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 20px;
+      background: rgba(255,255,255,0.05);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+    .deck-front { color: var(--primary); }
+    .deck-back { transform: rotateY(180deg); color: white; background: linear-gradient(135deg, var(--primary), var(--secondary)); }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      background: #08111d;
+      padding: 35px;
+      font-size: 0.95em;
+      margin-top: 50px;
+    }
+
+    /* Botão tema */
+    .toggle-theme {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      background: var(--accent);
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: 0.3s;
+    }
+    .toggle-theme:hover { transform: scale(1.1); }
+
+    /* Animações */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <button class="toggle-theme" onclick="toggleTheme()">🌙 Modo Escuro</button>
+
+  <header>
+    <h1>Clã dos Rapazes</h1>
+    <p>Suba troféus sem perder a graça</p>
+  </header>
+
+  <nav>
+    <a href="#sobre">Sobre</a>
+    <a href="#regras">Regras</a>
+    <a href="#ranking">Ranking</a>
+    <a href="#decks">Decks</a>
+    <a href="#vagas">Vagas</a>
+    <a href="#contato">Contato</a>
+  </nav>
+
+  <section id="sobre">
+    <h2>Sobre o Clã</h2>
+    <div class="card">
+      <p>O <b>Clã dos Rapazes</b> é focado em diversão e competitividade equilibrada. Aqui você sobe troféus sem perder a graça, participa de guerras, doa cartas e evolui junto com a galera.</p>
+    </div>
+    <div class="cta-buttons">
+      <button onclick="goTo('vagas')">Entrar no Clã</button>
+      <button onclick="openLink('https://discord.com')">Entrar no Discord</button>
+      <button onclick="goTo('vagas')">Aplicar Agora</button>
+    </div>
+  </section>
+
+  <section id="regras">
+    <h2>Regras do Clã</h2>
+    <div class="card">
+      <ul>
+        <li>Mínimo de 5000 troféus para entrada</li>
+        <li>Doar pelo menos 100 cartas por semana</li>
+        <li>Participar das guerras e eventos do clã</li>
+        <li>Respeitar todos os membros</li>
+        <li>Inatividade acima de 7 dias sem justificar = expulsão</li>
+        <li>Idade mínima: 14 anos</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="ranking" class="ranking">
+    <h2>Ranking Interno</h2>
+    <div class="card">
+      <ol>
+        <li>🔥 Flame</li>
+        <li>⚡ Kira</li>
+        <li>🎯 Abelzin</li>
+        <li>👑 Murilenda:o</li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="decks">
+    <h2>Decks Recomendados</h2>
+    <div class="deck-grid">
+      <div class="deck">
+        <div class="deck-inner">
+          <div class="deck-front"><h4>2.6 Hog Cycle</h4></div>
+          <div class="deck-back"><p>Rápido e eficiente.</p><button onclick="alert('Deck 2.6 Hog Cycle copiado!')">📋 Copiar Deck</button></div>
+        </div>
+      </div>
+      <div class="deck">
+        <div class="deck-inner">
+          <div class="deck-front"><h4>Log Bait</h4></div>
+          <div class="deck-back"><p>Controle e pressão constante.</p><button onclick="alert('Deck Log Bait copiado!')">📋 Copiar Deck</button></div>
+        </div>
+      </div>
+      <div class="deck">
+        <div class="deck-inner">
+          <div class="deck-front"><h4>Golem Beatdown</h4></div>
+          <div class="deck-back"><p>Força bruta para push pesado.</p><button onclick="alert('Deck Golem Beatdown copiado!')">📋 Copiar Deck</button></div>
+        </div>
+      </div>
+      <div class="deck">
+        <div class="deck-inner">
+          <div class="deck-front"><h4>LavaLoon</h4></div>
+          <div class="deck-back"><p>Aéreo forte e difícil de parar.</p><button onclick="alert('Deck LavaLoon copiado!')">📋 Copiar Deck</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="vagas">
+    <h2>Vagas Abertas</h2>
+    <div class="card">
+      <p>Atualmente temos <b>5 vagas</b> de um total de 50.</p>
+      <div class="cta-buttons">
+        <button onclick="applyNow()">Aplicar Agora</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato">
+    <h2>Contato</h2>
+    <div class="card">
+      <p>Email oficial do clã: <a href="mailto:akatroro@gmail.com">akatroro@gmail.com</a></p>
+      <p>Redes sociais: <br>
+        <button onclick="openLink('https://discord.com')">Discord</button>
+        <button onclick="openLink('https://youtube.com')">YouTube</button>
+        <button onclick="openLink('https://tiktok.com')">TikTok</button>
+        <button onclick="openLink('https://instagram.com')">Instagram</button>
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Clã dos Rapazes - Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    let darkMode = true;
+    function toggleTheme() {
+      if (darkMode) {
+        document.body.style.background = "var(--bg-light)";
+        document.body.style.color = "var(--text-light)";
+        document.querySelector('.toggle-theme').innerText = '☀️ Modo Claro';
+      } else {
+        document.body.style.background = "var(--bg-dark)";
+        document.body.style.color = "var(--text-dark)";
+        document.querySelector('.toggle-theme').innerText = '🌙 Modo Escuro';
+      }
+      darkMode = !darkMode;
+    }
+
+    function goTo(sectionId) {
+      document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function openLink(url) {
+      window.open(url, '_blank');
+    }
+
+    function applyNow() {
+      alert('Sua aplicação para entrar no Clã dos Rapazes foi enviada!');
+    }
+
+    /* Animação ao scroll */
+    const sections = document.querySelectorAll("section");
+    window.addEventListener("scroll", () => {
+      const trigger = window.innerHeight * 0.85;
+      sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < trigger) sec.classList.add("show");
+      });
+    });
+  </script>
+</body>
+</html>
