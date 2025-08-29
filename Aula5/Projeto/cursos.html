@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Cadastro Escolar</title>
+    <link rel="stylesheet" href="/Aula5/Projeto/style.css">
+</head>
+<body>
+<div class="container">
+        <h1>🏫 Sistema de Cadastro Escolar</h1>
+        <p>Bem-vindos ao sistema de cadastros de nossa escola virtual!</p>
+        <h2>📋 Menu de Cadastros</h2>
+        <a href="/Aula5/Projeto/aluno.html"><button>👨‍🎓 Cadastro de Aluno</button></a>
+        <a href="/Aula5/Projeto/professor.html"><button>👨‍🏫 Cadastrar Professor</button></a>
+        <a href="/Aula5/Projeto/cursos.html"><button>📚 Cadastrar Curso</button></a>
+        <a href="/Aula5/Projeto/livro.html"><button>📖 Cadastrar Livro</button></a>
+    
+    <div class="formulario">
+        <h3>📚 Cadastro de Curso</h3>
+        <form>
+            <label for="nome">Nome do Curso:</label><br>
+
+            <input type="text" name="nome" size="50"><br><br>
+
+
+            <label for="codigo">Código de Curso:</label><br>
+            <input type="number" name="codigo"><br><br>
+
+            <label for="categoria">Categoria:</label><br>
+
+            <select name="formacao" id="formacao">
+
+                <option value="">Selecione a categoria</option>
+                <option value="cienciasexatas">Ciências Exatas </option>
+                <option value="cienciasbiológicas">Ciências Biológicas</option>
+                <option value="cienciashumanas">Ciências Humanas</option>
+                <option value="linguagens">Linguagens</option>
+                <option value="artes">Artes</option>
+            </select><br><br>
+
+
+ <label for="modalidade">Modalidade:</label><br>
+       <label for="presencial"><input type="radio" name="modalidades" value="presencial">Presencial</label><br>
+       <label for="online"><input type="radio" name="modalidades" value="online">Online</label><br>
+       <label for="hibrido"><input type="radio" name="modalidades" value="hibrido">Hibrído</label><br><br>
+
+
+
+<label for="prerequisitos">Pré-Requisitos:</label><br>
+            <input type="checkbox" name="pre" value="ensino"> Ensino Médio Completo <br>
+            <input type="checkbox" name="pre" value="curso"> Curso Básico <br>
+            <input type="checkbox" name="pre" value="experiencia"> Experiência Prévia <br><br>
+
+
+<label for="descricao">Descrição do curso:</label> <br>
+        <textarea name="Descrição" id="descricao" ></textarea> <br>
+
+        <button type="submit">Cadastrar Professor</button>
+       <button type="reset">Limpar Dados</button>
+
+
+
+
+    </foxrm>
+</body>
+</html>

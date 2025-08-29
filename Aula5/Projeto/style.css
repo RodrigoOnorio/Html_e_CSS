@@ -1,0 +1,34 @@
+body{
+    background-color: rgb(205, 219, 250);
+    font-family: arial;
+
+}
+.container{
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin: 20px;
+}
+button{
+    background-color: #1963b794 ;
+    color: black;
+    padding: 20px;
+    margin: 5px;
+    border: none;
+}
+
+.formulario{
+    background-color: #c6e2fd;
+    padding: 15px;
+    margin: 10px;
+}
+
+#observacoes{
+    width: 25%;
+    height: 200px;
+}
+
+
+#descricao{
+    width: 25%;
+    height: 200px;
+}

@@ -1,0 +1,41 @@
+body{
+    background-color: rgb(241, 241, 241);
+    font-family: arial;
+
+}
+.bloco1{
+    background-color: rgb(247, 247, 162);
+    padding: 20px;
+    margin: 20px;
+    color: black;
+    font-size: small;
+    border-radius: 20px;
+    border: 3px solid rgb(0, 0, 0);
+}
+.bloco2{
+    background-color: rgb(75, 111, 169);
+    padding: 20px;
+    margin: 20px;
+    color: white;
+    font-size: small;
+    border-radius: 20px;
+    border: 3px solid rgb(255, 238, 0);
+}
+.bloco3{
+    background-color: rgb(132, 155, 238);
+    padding: 20px;
+    margin: 20px;
+    color: rgb(0, 0, 131);
+    font-size: small;
+    border-radius: 20px;
+    border: 3px solid rgb(0, 0, 131);
+}
+.bloco4{
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    margin: 20px;
+    color: rgb(182, 0, 0);
+    font-size: small;
+    border-radius: 20px;
+    border: 3px solid rgb(182, 0, 0);
+}
