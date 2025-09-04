@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercícios de CSS</title>
+  <style>
+    /* 1. Cor do parágrafo */
+    p {
+      color: blue;
+    }
+
+    /* 2. Título principal */
+    #titulo-principal {
+      background-color: yellow;
+    }
+
+    /* 3. Subtítulos com classe */
+    .subtitulo {
+      color: green;
+    }
+
+    /* 4. Estilizando listas */
+    li {
+      color: red;
+    }
+
+    /* 5. Cor de fundo diferente */
+    #caixa1 {
+      background-color: lightblue;
+    }
+    #caixa2 {
+      background-color: lightcoral;
+    }
+
+    /* 6. Agrupando seletores */
+    p, h2, h3 {
+      color: purple;
+    }
+
+    /* 7. Texto centralizado */
+    #centralizado {
+      text-align: center;
+    }
+
+    /* 8. Diferenciando links */
+    #link-google {
+      color: orange;
+    }
+    #link-youtube {
+      color: red;
+    }
+
+    /* 9. Classe compartilhada */
+    .negrito {
+      font-weight: bold;
+    }
+
+    /* 10. Estilizando imagens */
+    img {
+      border: 2px solid black;
+    }
+
+    /* 11. Descendente básico */
+    div p {
+      color: brown;
+    }
+
+    /* 12. Dois parágrafos diferentes */
+    .primeiro {
+      color: teal;
+    }
+    .segundo {
+      color: olive;
+    }
+
+    /* 13. Mudando fonte */
+    #fonte-arial {
+      font-family: Arial, sans-serif;
+    }
+
+    /* 14. Negrito e itálico */
+    .bold {
+      font-weight: bold;
+    }
+    .italic {
+      font-style: italic;
+    }
+    .underline {
+      text-decoration: underline;
+    }
+
+    /* 15. Cor apenas no título */
+    div h3 {
+      color: pink;
+    }
+
+    /* 16. Seletores repetidos */
+    #div1 {
+      background-color: red;
+    }
+    #div2 {
+      background-color: green;
+    }
+    #div3 {
+      background-color: blue;
+    }
+
+    /* 17. Estilizando span */
+    .destaque {
+      color: orange;
+    }
+
+    /* 18. Caixa colorida */
+    #caixa-colorida {
+      background-color: lightgreen;
+      border: 3px solid darkgreen;
+      padding: 10px;
+    }
+
+    /* 19. Links com classe */
+    .sublinhado {
+      text-decoration: underline;
+    }
+
+    /* 20. Agrupando tudo */
+    h1, p, a {
+      color: navy;
+    }
+  </style>
+</head>
+<body>
+  <!-- 1 -->
+  <p>Parágrafo 1</p>
+  <p>Parágrafo 2</p>
+  <p>Parágrafo 3</p>
+
+  <!-- 2 -->
+  <h1 id="titulo-principal">Título Principal Bacana B) </h1>
+
+  <!-- 3 -->
+  <h2 class="subtitulo">Subtítulo 1</h2>
+  <h2 class="subtitulo">Subtítulo 2</h2>
+  <h2 class="subtitulo">Subtítulo 3</h2>
+
+  <!-- 4 -->
+  <ul>
+    <li>Batata</li>
+    <li>Alface</li>
+    <li>Rucula</li>
+  </ul>
+
+  <!-- 5 -->
+  <div id="caixa1">Caixa 1</div>
+  <div id="caixa2">Caixa 2</div>
+
+  <!-- 6 -->
+  <p>Parágrafo agrupado</p>
+  <h2>Subtítulo agrupado</h2>
+  <h3>Título agrupado</h3>
+
+  <!-- 7 -->
+  <p id="centralizado">Texto no meio</p>
+
+  <!-- 8 -->
+  <a id="link-google" href="https://www.google.com">Google</a>
+  <a id="link-youtube" href="https://www.youtube.com">YouTube</a>
+
+  <!-- 9 -->
+  <p class="negrito">Parágrafo um</p>
+  <p class="negrito">Parágrafo 2</p>
+  <p class="negrito">Parágrafo three</p>
+
+  <!-- 10 -->
+  <img src="https://tse2.mm.bing.net/th/id/OIP.15yfFmPC7f2FXmWNZPFtWAHaLH?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Imagem 1" width="300">
+  <img src="https://s2.glbimg.com/v852h9EH9JTPOAp4PJGxY1mJscs=/0x0:427x640/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2019/F/7/qkFYZGRuuqBkBNsSng3w/3.jpg" alt="Imagem 2" width="300">
+
+
+  <!-- 11 -->
+  <div>
+    <p>Parágrafo dentro da div</p>
+  </div>
+
+  <!-- 12 -->
+  <p class="primeiro">Primeiro parágrafo 1 1 1 </p>
+  <p class="segundo">Segundo parágrafo 2 2 2</p>
+
+  <!-- 13 -->
+  <h1 id="fonte-arial">Título com fonte Arialll</h1>
+
+  <!-- 14 -->
+  <p class="bold">Texto em negrito</p>
+  <p class="italic">Texto em itálico</p>
+  <p class="underline">Texto sublinhado</p>
+
+  <!-- 15 -->
+  <div>
+    <h3>Título dentro da div</h3>
+  </div>
+
+  <!-- 16 -->
+  <div id="div1">Div Vermelha</div>
+  <div id="div2">Div Verde</div>
+  <div id="div3">Div Azul</div>
+
+  <!-- 17 -->
+  <p>Essa palavra é <span class="destaque">importante</span>.</p>
+
+  <!-- 18 -->
+  <div id="caixa-colorida">Caixa Misteriosa</div>
+
+  <!-- 19 -->
+  <a href="#" class="sublinhado">Link 1</a>
+  <a href="#" class="sublinhado">Link 2</a>
+  <a href="#" class="sublinhado">Link 3</a>
+
+  <!-- 20 -->
+  <h1>Título agrupado</h1>
+  <p>Parágrafo agrupado</p>
+  <a href="#">Link agrupado</a>
+</body>
+</html>
