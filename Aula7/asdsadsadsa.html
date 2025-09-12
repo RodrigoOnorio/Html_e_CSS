@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>FloatyPlay — Notícias de Jogos (Layout baseado em float)</title>
+  <style>
+    /* Reset simples */
+    html,body,div,span,h1,h2,h3,h4,h5,h6,p,ul,li,figure,figcaption,blockquote,pre,a,img{margin:0;padding:0;border:0}
+    body{font-family: 'Segoe UI', Roboto, Arial, sans-serif;background:#0f1115;color:#e7e9ee;line-height:1.45}
+
+    /* Container principal */
+    .container{width:1200px;margin:20px auto;background:#0b0c10;border-radius:10px;padding:18px;box-shadow:0 8px 30px rgba(0,0,0,.6);overflow:hidden}
+
+    /* Cabeçalho */
+    header.site-header{padding:12px 18px;border-bottom:1px solid rgba(255,255,255,.05);overflow:auto}
+    .branding{float:left;width:420px}
+    .branding h1{font-size:28px;color:#ffd166;letter-spacing:1px}
+    .branding p{color:#9aa0b2;margin-top:6px}
+    .top-controls{float:right;width:740px;text-align:right}
+    .top-controls .search{display:inline-block;border-radius:24px;padding:6px 10px;background:#101216}
+
+    /* Navegação flutuante */
+    nav.main-nav{float:left;width:100%}
+    nav.main-nav ul{list-style:none;overflow:auto}
+    nav.main-nav li{float:left;margin-right:12px}
+    nav.main-nav a{display:block;padding:8px 12px;background:linear-gradient(180deg,#14161b,#0b0c10);border-radius:6px;color:#cfe3ff;text-decoration:none}
+
+    /* Layout por floats: coluna principal + sidebar */
+    .main{overflow:auto;padding-top:14px}
+    .content{float:left;width:760px}
+    .sidebar{float:right;width:400px}
+
+    /* Card de notícia (conteúdo principal) */
+    article.card{background:#0b0d12;border:1px solid rgba(255,255,255,.03);margin-bottom:16px;border-radius:8px;padding:14px;overflow:auto}
+    .card .thumb{float:left;width:320px;margin-right:14px}
+    .card .thumb img{display:block;width:100%;height:auto;border-radius:6px}
+    .card .meta{overflow:auto}
+    .card h2{font-size:20px;color:#ffd166;margin-bottom:6px}
+    .card p.lead{color:#c9d2e6}
+    .card .tags{margin-top:8px}
+    .tag{display:inline-block;background:#1c2230;padding:6px 8px;border-radius:6px;margin-right:6px;color:#9fb1ff;font-size:12px}
+
+    /* Lista de notícias menores (floats dentro de floats) */
+    .mini-list{overflow:auto}
+    .mini-item{float:left;width:360px;margin:8px 6px;padding:10px;background:#07080a;border-radius:6px;border:1px solid rgba(255,255,255,.02)}
+    .mini-item img{float:left;width:120px;height:70px;margin-right:8px;border-radius:4px}
+    .mini-item h3{font-size:14px;color:#ffd166}
+    .mini-item p{font-size:13px;color:#bfc9e0}
+
+    /* Sidebar widgets usando floats para colunas internas */
+    .widget{background:#07080a;padding:12px;margin-bottom:12px;border-radius:8px;border:1px solid rgba(255,255,255,.02);overflow:auto}
+    .widget h4{color:#ffd166;margin-bottom:8px}
+    .trend-list li{float:left;width:46%;margin:2% 2%;list-style:none}
+
+    /* Grid de vídeos (apenas exemplos estáticos) */
+    .video-grid .video{float:left;width:49%;margin:0 0 8px 0;background:#0a0b0d;padding:8px;border-radius:6px}
+
+    /* Footer */
+    footer{clear:both;padding:12px;text-align:center;color:#8c93a8;border-top:1px solid rgba(255,255,255,.03);margin-top:18px}
+
+    /* Utilitários float clearfix */
+    .clearfix:after{content:'';display:block;clear:both}
+    .float-left{float:left}
+    .float-right{float:right}
+
+    /* Responsividade mínima (usa floats ainda) */
+    @media(max-width:1220px){.container{width:95%}.content{width:100%}.sidebar{width:100%;float:none}}
+
+    /* Estilizações extra para demonstrar usos específicos de float */
+    .feature-strip{background:linear-gradient(90deg,#111216,#0c0d10);padding:10px;border-radius:8px;margin:10px 0;overflow:auto}
+    .feature-item{float:left;width:33%;padding:8px}
+    .feature-item h5{color:#ffd166;font-size:14px}
+    .feature-item p{color:#bfc9e0}
+
+    /* Banner flutuante lateral (sticky visual simulado com float and fixed fallback) */
+    .float-banner{float:right;width:180px;margin-left:12px}
+
+    /* Pequenas animações (sem JS) para hover */
+    a:hover{opacity:.95}
+    .card:hover{box-shadow:0 10px 30px rgba(0,0,0,.6);transform:translateY(-3px);transition:all .18s}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="site-header clearfix">
+      <div class="branding">
+        <h1>FloatyPlay</h1>
+        <p>O portal de notícias de jogos que ainda acredita no poder do float ✨</p>
+      </div>
+      <div class="top-controls">
+        <div class="search">🔍 Buscar notícias, análises e mais</div>
+        <div style="margin-top:8px;color:#9aa0b2">Últimas atualizações em destaque</div>
+      </div>
+    </header>
+
+    <nav class="main-nav clearfix" aria-label="Menu principal">
+      <ul>
+        <li><a href="#">Início</a></li>
+        <li><a href="#">Notícias</a></li>
+        <li><a href="#">Análises</a></li>
+        <li><a href="#">Streams</a></li>
+        <li><a href="#">Lançamentos</a></li>
+        <li><a href="#">Especiais</a></li>
+      </ul>
+    </nav>
+
+    <section class="main clearfix">
+
+      <section class="content">
+
+        <!-- Artigo em destaque 1 -->
+        <article class="card clearfix">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1605902711622-cfb43c44367e?fit=crop&w=800&q=60" alt="Imagem Elden Ring">
+          </div>
+          <div class="meta">
+            <h2>Elden Ring: "Deep of Night" — novo modo de alta dificuldade disponível</h2>
+            <p class="lead">FromSoftware lançou hoje o modo "Deep of Night" para <em>Elden Ring: Nightreign</em>, um desafio projetado para jogadores veteranos, trazendo inimigos reforçados, equipamentos de nível vermelho e um sistema de profundidade que escalará a dificuldade.</p>
+            <div class="tags">
+              <span class="tag">Elden Ring</span>
+              <span class="tag">FromSoftware</span>
+              <span class="tag">DLC/Modo</span>
+            </div>
+            <p style="margin-top:10px;color:#aeb9d8;font-size:13px">Resumo do que muda: inimigos com variantes "vermelhas", três novos slots de relíquia, e modificadores que alteram o mapeamento e objetivos. (fonte: anúncios oficiais e cobertura especializada)</p>
+          </div>
+        </article>
+
+        <!-- Artigo em destaque 2 -->
+        <article class="card clearfix">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1543872084-c7bd3822856f?fit=crop&w=800&q=60" alt="Imagem Silksong">
+          </div>
+          <div class="meta">
+            <h2>Silksong domina lojas digitais — pico massivo de jogadores no lançamento</h2>
+            <p class="lead">O tão aguardado Hollow Knight: Silksong foi lançado recentemente e causou instabilidade em diversas lojas digitais, alcançando centenas de milhares de jogadores simultâneos e figurando entre os picos históricos de tráfego em plataformas como Steam.</p>
+            <div class="tags">
+              <span class="tag">Silksong</span>
+              <span class="tag">Indie</span>
+              <span class="tag">Lançamento</span>
+            </div>
+            <p style="margin-top:10px;color:#aeb9d8;font-size:13px">O sucesso coloca Silksong como um marco para jogos independentes, tanto em engajamento quanto em repercussão crítica. (resumo a partir de reportagens especializadas)</p>
+          </div>
+        </article>
+
+        <!-- Fita de recursos (feature strip) demonstrando floats em colunas -->
+        <div class="feature-strip clearfix">
+          <div class="feature-item">
+            <h5>PS Plus — novidades de Setembro</h5>
+            <p>Sony adicionou títulos notórios ao catálogo do PlayStation Plus Extra e Premium, incluindo tanto lançamentos recentes quanto clássicos re-remasterizados.</p>
+          </div>
+          <div class="feature-item">
+            <h5>Call of Duty — anti-cheat e patches</h5>
+            <p>Atualizações de backend e melhorias no sistema anti-cheat foram implantadas no último patch para reduzir trapaças e melhorar a estabilidade.</p>
+          </div>
+          <div class="feature-item">
+            <h5>Lançamentos de Setembro</h5>
+            <p>Mês intenso de lançamentos com títulos de alto perfil e indies que explodiram em popularidade.</p>
+          </div>
+        </div>
+
+        <!-- Mini notícias em grade usando floats -->
+        <section class="mini-list clearfix" aria-label="Mais notícias">
+
+          <div class="mini-item">
+            <img src="https://images.unsplash.com/photo-1526378728946-8f4f0d5f8c9a?fit=crop&w=400&q=60" alt="mini">
+            <h3>PlayStation 30º — campanha #PlayStation30Memories</h3>
+            <p>Campanha oficial incentiva a comunidade a compartilhar memórias da franquia em redes sociais até meados de setembro.</p>
+          </div>
+
+          <div class="mini-item">
+            <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?fit=crop&w=400&q=60" alt="mini2">
+            <h3>Updates de balanceamento</h3>
+            <p>Diversos jogos online receberam ajustes de balanceamento nos últimos dias; equipes de desenvolvimento continuam monitorando a meta.</p>
+          </div>
+
+          <div class="mini-item">
+            <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?fit=crop&w=400&q=60" alt="mini3">
+            <h3>Indie em destaque</h3>
+            <p>Estúdio independente vê seu projeto ultrapassar expectativas e ganhar atenção de publicadoras.</p>
+          </div>
+
+          <div class="mini-item">
+            <img src="https://images.unsplash.com/photo-1526378728946-8f4f0d5f8c9a?fit=crop&w=400&q=60" alt="mini4">
+            <h3>Hardware/Periféricos</h3>
+            <p>Lançamentos de periféricos e re-estoques marcantes para colecionadores e pro-players.</p>
+          </div>
+
+        </section>
+
+        <!-- Artigos longos com muitas caixas e floats internas -->
+        <article class="card clearfix">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?fit=crop&w=800&q=60" alt="call of duty">
+          </div>
+          <div class="meta">
+            <h2>Call of Duty: atualizações de segurança e RICOCHET</h2>
+            <p class="lead">A equipe por trás de Call of Duty publicou notas de atualização confirmando melhorias no sistema RICOCHET Anti-Cheat durante a última temporada, além de correções de bugs com impacto em modos populares.</p>
+            <div class="tags"><span class="tag">Call of Duty</span><span class="tag">Anti-Cheat</span></div>
+            <p style="margin-top:8px;color:#aeb9d8;font-size:13px">Detalhes técnicos incluem ajustes no matchmaking e correções para travamentos reportados em mapas populares.</p>
+
+            <div style="margin-top:12px">
+              <div style="float:left;width:58%">
+                <h4 style="color:#ffd166;font-size:16px">Impacto no multiplayer</h4>
+                <p style="color:#bfc9e0;font-size:13px">Com as mudanças, espera-se redução de trapaças e uma experiência de partida mais estável para jogadores de todas as regiões.</p>
+              </div>
+              <div style="float:right;width:38%" class="float-banner">
+                <div style="background:#0b0d11;padding:10px;border-radius:6px;border:1px solid rgba(255,255,255,.02)">
+                  <strong>Patrocinador</strong>
+                  <p style="font-size:13px;color:#bfc9e0;margin-top:6px">Headset X Pro — qualidade para streamers</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- Sessão editorial/coluna (ex.: opinião) usando floats lado a lado -->
+        <div class="card clearfix">
+          <div style="float:left;width:48%;padding-right:8px">
+            <h2 style="color:#ffd166">Editorial: O renascimento dos indies</h2>
+            <p style="color:#bfc9e0;font-size:14px">Jogos como Silksong mostram que equipes pequenas podem competir por atenção global com jogos AAA quando a qualidade de design e a comunidade se alinham. Neste artigo, discutimos fatores que levam a lançamentos indie a se tornarem fenômenos culturais.</p>
+          </div>
+          <div style="float:right;width:48%;padding-left:8px">
+            <h2 style="color:#ffd166">Coluna técnica: quando usar modos hardcore?</h2>
+            <p style="color:#bfc9e0;font-size:14px">Modos de alta dificuldade costumam revitalizar comunidades jogadores hardcore, mas exigem design cuidadoso para não alienar a base de jogadores principais.</p>
+          </div>
+        </div>
+
+        <!-- Sessão de reviews (mockup) -->
+        <article class="card clearfix">
+          <h2 style="color:#ffd166">Análises rápidas</h2>
+
+          <div style="margin-top:10px" class="clearfix">
+            <div style="float:left;width:48%">
+              <h3>Silksong — Review abreviado</h3>
+              <p style="color:#bfc9e0">Metroidvania refinado com design de combate apurado e mapas intricados. Recomenda-se para fãs do gênero.</p>
+            </div>
+            <div style="float:right;width:48%">
+              <h3>Elden Ring: Deep of Night — Review técnico</h3>
+              <p style="color:#bfc9e0">Modo que entrega risco x recompensa. Bons jogadores encontrarão satisfação, enquanto novatos podem sentir frustração.</p>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- Lista extensa (longform) para demonstrar muitos floats e colunas internas -->
+        <article class="card clearfix">
+          <h2 style="color:#ffd166">Guia: Como sobreviver a modos de alta dificuldade</h2>
+          <p style="color:#bfc9e0;margin-top:8px">Compilamos dicas práticas enviadas por jogadores e comunidades: montagem de build, priorização de equipamento, gerenciamento de recursos, e estratégias de grupo.</p>
+
+          <div style="margin-top:12px;overflow:auto">
+            <div style="float:left;width:32%;padding-right:12px">
+              <h4 style="color:#ffd166">Preparação</h4>
+              <ol style="color:#bfc9e0;margin-left:18px">
+                <li>Estude padrões inimigos</li>
+                <li>Invista em efeitos de sobrevivência</li>
+                <li>Teste builds em áreas menores</li>
+              </ol>
+            </div>
+
+            <div style="float:left;width:32%;padding-right:12px">
+              <h4 style="color:#ffd166">Execução</h4>
+              <ol style="color:#bfc9e0;margin-left:18px">
+                <li>Controle o espaço de combate</li>
+                <li>Priorize objetivos secundários fáceis</li>
+                <li>Use consumíveis táticos</li>
+              </ol>
+            </div>
+
+            <div style="float:left;width:32%">
+              <h4 style="color:#ffd166">Recuperação</h4>
+              <ol style="color:#bfc9e0;margin-left:18px">
+                <li>Saiba quando recuar</li>
+                <li>Reforce defesas temporárias</li>
+                <li>Compartilhe recursos com aliados</li>
+              </ol>
+            </div>
+          </div>
+
+        </article>
+
+      </section> <!-- fim content -->
+
+      <aside class="sidebar">
+
+        <div class="widget">
+          <h4>Top Trends</h4>
+          <ul class="trend-list clearfix">
+            <li>Silksong — pico em lojas digitais</li>
+            <li>Elden Ring — novo modo</li>
+            <li>PS Plus — atualizações</li>
+            <li>Call of Duty — RICOCHET</li>
+          </ul>
+        </div>
+
+        <div class="widget">
+          <h4>Assine nossa newsletter</h4>
+          <p style="color:#bfc9e0">Receba as principais notícias e guias direto no seu e-mail. (formulário simulado)</p>
+          <div style="background:#0b0d11;padding:8px;border-radius:6px;margin-top:8px">
+            <input placeholder="seu@email.com" style="width:100%;padding:8px;border-radius:6px;border:1px solid rgba(255,255,255,.03);background:#061018;color:#cfe3ff">
+            <button style="margin-top:8px;padding:8px 14px;border-radius:6px;border:none;background:#ffd166;color:#0b0c10;cursor:pointer">Inscrever</button>
+          </div>
+        </div>
+
+        <div class="widget">
+          <h4>Vídeos populares</h4>
+          <div class="video-grid clearfix">
+            <div class="video"><strong>Let's Play — Silksong</strong><p style="color:#bfc9e0">Dicas iniciais</p></div>
+            <div class="video"><strong>Deep of Night — boss guide</strong><p style="color:#bfc9e0">Táticas para iniciantes</p></div>
+          </div>
+        </div>
+
+        <div class="widget">
+          <h4>Colunas & Opiniões</h4>
+          <p style="color:#bfc9e0">Colunistas convidados falam sobre tendências de mercado e comportamento de comunidades.</p>
+        </div>
+
+      </aside>
+
+    </section> <!-- fim main -->
+
+    <footer>
+      <p>© 2025 FloatyPlay — Layout demonstrativo de floats — Conteúdo jornalístico resumido a partir de reportagens públicas</p>
+    </footer>
+
+  </div> <!-- fim container -->
+</body>
+</html>

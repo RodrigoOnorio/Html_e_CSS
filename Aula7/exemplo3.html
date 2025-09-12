@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Guia Completo do Float no CSS</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      line-height: 1.7;
+      background: #f7f7f7;
+      color: #333;
+      max-width: 900px;
+      margin: 0 auto;
+      padding-top: 90px;
+      scroll-behavior: smooth;
+    }
+
+    /* ===== Cabeçalho fixo ===== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #ffffffee;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: #0077cc;
+    }
+
+    .toggle-all {
+      background: #0077cc;
+      color: #fff;
+      padding: 8px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .toggle-all:hover { background: #005da3; }
+
+    h2 {
+      color: #444;
+      margin-top: 40px;
+      border-left: 4px solid #0077cc;
+      padding-left: 8px;
+      font-size: 1.6rem;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 1.3rem;
+      color: #0077cc;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: color 0.3s;
+    }
+
+    .caixa {
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      margin: 20px 0;
+      padding: 15px;
+      background: #fff;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .caixa:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .caixa.ativa h3 { color: #004a88; }
+    h3::after { content: "➕"; font-size: 1rem; transition: transform 0.3s; }
+    .caixa.ativa h3::after { content: "➖"; }
+
+    .conteudo {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.3s ease;
+      opacity: 0;
+      margin-top: 0;
+    }
+    .caixa.ativa .conteudo {
+      max-height: 800px;
+      opacity: 1;
+      margin-top: 10px;
+    }
+
+    .caixa img {
+      width: 120px;
+      margin: 10px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    .left img { float: left; margin-right: 15px; }
+    .right img { float: right; margin-left: 15px; }
+    .none img, .inline-start img, .inline-end img, .inherit img, .initial img, .unset img {
+      float: none;
+      display: block;
+      margin: 10px auto;
+    }
+
+    /* ===== Código destacado ===== */
+    pre {
+      background: #272822;
+      color: #f8f8f2;
+      padding: 10px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+    }
+    .copy-btn {
+      background: #0077cc;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      float: right;
+      margin-bottom: 8px;
+      border: none;
+    }
+    .copy-btn:hover { background: #005da3; }
+
+    /* ===== Tabela comparativa ===== */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    table th, table td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+    table th { background: #f3f3f3; }
+
+    /* ===== Exemplo Clearfix ===== */
+    .exemplo-clear { background: #fff; border-radius: 12px; padding: 15px; margin-top: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+    .float-box { float: left; width: 80px; height: 80px; background: #0077cc; margin: 10px; border-radius: 8px; }
+    .clear-box { clear: both; background: #e2e2e2; padding: 8px; margin-top: 8px; border-radius: 8px; }
+
+    /* ===== Responsividade ===== */
+    @media (max-width: 600px) {
+      .left img, .right img { float: none; display: block; margin: 10px auto; }
+      body { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Guia do Float</h1>
+  <div class="toggle-all" id="toggleAll">📂 Abrir tudo</div>
+</header>
+
+<p><b>Histórico:</b> originalmente, o <code>float</code> foi criado para alinhar imagens com o texto ao redor. Depois foi usado para layouts de colunas — mas hoje temos <code>flexbox</code> e <code>grid</code>, que são melhores para isso.</p>
+
+<h2>Exemplos de uso do <code>float</code></h2>
+
+<!-- TODOS OS EXEMPLOS MANTIDOS -->
+<div class="caixa left">
+  <h3>float: left;</h3>
+  <div class="conteudo">
+    <button class="copy-btn" data-code="float: left;">Copiar código</button>
+    <pre><code>img { float: left; }</code></pre>
+    <p>A imagem flutua para a <b>esquerda</b>.</p>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5qsnXqFp2GnN1fZ-3y2RIFy7oOexfhzHaCA&s">
+    O texto se ajusta ao redor dela.
+  </div>
+</div>
+
+<div class="caixa right">
+  <h3>float: right;</h3>
+  <div class="conteudo">
+    <button class="copy-btn" data-code="float: right;">Copiar código</button>
+    <pre><code>img { float: right; }</code></pre>
+    <p>A imagem flutua para a <b>direita</b>.</p>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5qsnXqFp2GnN1fZ-3y2RIFy7oOexfhzHaCA&s">
+    O texto se ajusta ao redor dela.
+  </div>
+</div>
+
+<div class="caixa none">
+  <h3>float: none;</h3>
+  <div class="conteudo">
+    <button class="copy-btn" data-code="float: none;">Copiar código</button>
+    <pre><code>img { float: none; }</code></pre>
+    <p>A imagem não flutua e fica no fluxo normal.</p>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5qsnXqFp2GnN1fZ-3y2RIFy7oOexfhzHaCA&s">
+  </div>
+</div>
+
+<div class="caixa inline-start">
+  <h3>float: inline-start;</h3>
+  <div class="conteudo">
+    <button class="copy-btn" data-code="float: inline-start;">Copiar código</button>
+    <pre><code>img { float: inline-start; }</code></pre>
+    <p>A imagem flutua para o início da linha (em português, esquerda).</p>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5qsnXqFp2GnN1fZ-3y2RIFy7oOexfhzHaCA&s">
+  </div>
+</div>
+
+<div class="caixa inline-end">
+  <h3>float: inline-end;</h3>
+  <div class="conteudo">
+    <button class="copy-btn" data-code="float: inline-end;">Copiar código</button>
+    <pre><code>img { float: inline-end; }</code></pre>
+    <p>A imagem flutua para o fim da linha (em português, direita).</p>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5qsnXqFp2GnN1fZ-3y2RIFy7oOexfhzHaCA&s">
+  </div>
+</div>
+
+<div class="caixa inherit">
+  <h3>float: inherit;</h3>
+  <div class="conteudo">
+    <button class="copy-btn" data-code="float: inherit;">Copiar código</button>
+    <pre><code>img { float: inherit; }</code></pre>
+    <p>Herda o valor de float do elemento pai.</p>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5qsnXqFp2GnN1fZ-3y2RIFy7oOexfhzHaCA&s">
+  </div>
+</div>
+
+<div class="caixa initial">
+  <h3>float: initial;</h3>
+  <div class="conteudo">
+    <button class="copy-btn" data-code="float: initial;">Copiar código</button>
+    <pre><code>img { float: initial; }</code></pre>
+    <p>Volta ao valor padrão do navegador (<code>none</code>).</p>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5qsnXqFp2GnN1fZ-3y2RIFy7oOexfhzHaCA&s">
+  </div>
+</div>
+
+<div class="caixa unset">
+  <h3>float: unset;</h3>
+  <div class="conteudo">
+    <button class="copy-btn" data-code="float: unset;">Copiar código</button>
+    <pre><code>img { float: unset; }</code></pre>
+    <p>Comporta-se como <code>inherit</code> se houver valor herdado, caso contrário como <code>initial</code>.</p>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5qsnXqFp2GnN1fZ-3y2RIFy7oOexfhzHaCA&s">
+  </div>
+</div>
+
+<h2>Problema comum: colapso de container</h2>
+<div class="exemplo-clear">
+  <div class="float-box"></div>
+  <p>Sem <code>clear</code> ou clearfix, o container pode "colapsar".</p>
+  <div class="clear-box">Este bloco usa <code>clear: both;</code> e fica corretamente abaixo.</div>
+</div>
+
+<h2>Comparação rápida</h2>
+<table>
+  <tr><th>Propriedade</th><th>Quando usar</th><th>Vantagens</th></tr>
+  <tr><td><code>float</code></td><td>Alinhar pequenas imagens ou ícones.</td><td>Simples e compatível com todos os navegadores.</td></tr>
+  <tr><td><code>flexbox</code></td><td>Layout em linha ou coluna, centralização fácil.</td><td>Responsivo, moderno, menos código.</td></tr>
+  <tr><td><code>grid</code></td><td>Layouts complexos de várias dimensões.</td><td>Controle total de linhas e colunas.</td></tr>
+</table>
+
+<h2>Exemplo moderno</h2>
+<div class="caixa">
+  <h3>Card de notícia com imagem à esquerda</h3>
+  <div class="conteudo">
+    <div style="overflow:auto">
+      <img src="https://placekitten.com/100/100" style="float:left; margin-right:15px; border-radius:50%">
+      <p><b>Gatinho quebra recorde!</b> Este exemplo mostra um card de notícia onde a imagem de perfil fica à esquerda e o texto se ajusta ao lado.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const caixas = document.querySelectorAll(".caixa");
+  const botaoToggle = document.getElementById("toggleAll");
+
+  caixas.forEach(caixa => {
+    caixa.querySelector("h3").addEventListener("click", () => {
+      caixa.classList.toggle("ativa");
+    });
+  });
+
+  botaoToggle.addEventListener("click", () => {
+    const abrirTudo = botaoToggle.textContent.includes("Abrir");
+    caixas.forEach(caixa => caixa.classList.toggle("ativa", abrirTudo));
+    botaoToggle.textContent = abrirTudo ? "📁 Fechar tudo" : "📂 Abrir tudo";
+  });
+
+  document.querySelectorAll(".copy-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      navigator.clipboard.writeText(btn.dataset.code);
+      btn.textContent = "✅ Copiado!";
+      setTimeout(() => btn.textContent = "Copiar código", 2000);
+    });
+  });
+</script>
+
+</body>
+</html>
+
+
