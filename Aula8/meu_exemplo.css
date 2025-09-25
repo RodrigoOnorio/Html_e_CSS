@@ -1,0 +1,15 @@
+.tabelas1 {
+border-collapse: collapse;
+}
+.tabelas1 td{
+    background-color: dodgerblue;
+    color: gold;
+    padding: 5px;
+    border: 1px solid black;
+}
+.tabelas1 th{
+    background-color: blue;
+    color: orange;
+    padding: 5px;
+    border: 1px solid black;
+}

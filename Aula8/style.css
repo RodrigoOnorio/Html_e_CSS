@@ -1,0 +1,51 @@
+.tabela1 { border: 2px solid black; border-collapse: collapse; }
+.tabela1 th, .tabela1 td { border: 1px solid black; padding: 5px; }
+
+.tabela2 th { background-color: gray; }
+
+.tabela3 td, .tabela3 th { color: blue; }
+
+.tabela4 { font-family: Arial, sans-serif; }
+
+.tabela5 th { font-size: 20px; }
+
+.tabela6 td { background-color: aquamarine; }
+
+.tabela7 td, .tabela7 th { text-align: center; }
+
+.tabela8, .tabela8 td, .tabela8 th {
+    border: 3px solid black;
+    border-collapse: collapse;
+    padding: 5px;
+}
+
+.tabela9 th { color: red; }
+
+.tabela10 td, .tabela10 th { padding: 10px; }
+
+.tabela11 td:first-child { font-style: italic; }
+
+.tabela12 td { font-weight: bold; border: 1px solid black; padding: 5px; }
+
+.tabela13 tr:first-child { background-color: lightblue; }
+
+.tabela14 td { color: green; }
+
+.tabela15 { font-family: Georgia, serif; font-size: 18px; }
+
+.tabela16 tr:nth-child(2) { background-color: lightyellow; }
+
+.tabela17 th { background-color: black; color: white; }
+
+.tabela18 td, .tabela18 th { text-transform: uppercase; }
+
+.tabela19 th { font-family: Verdana, sans-serif; }
+
+.tabela20, .tabela20 td, .tabela20 th {
+    border: 2px solid black;
+    border-collapse: collapse;
+    background-color: #f0f0f0;
+    color: darkblue;
+    font-weight: bold;
+    padding: 5px;
+}
