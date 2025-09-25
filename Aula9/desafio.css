@@ -1,0 +1,57 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+
+.tabela1 {
+    border-collapse: collapse;
+}
+
+.tabela1 td {
+    border: 2px solid black;
+    padding: 5px;
+    text-align: center;
+}
+
+
+.tabela2 {
+    border-collapse: collapse;
+}
+
+.tabela2 td {
+    border: 2px solid black;
+    padding: 5px;
+    text-align: center;
+}
+
+.tabela2 tr:nth-child(2){
+background-color: rgb(28, 246, 90);
+}
+
+.tabela2 td:nth-child(3){
+    background-color: rgb(68, 186, 245);
+    font-weight: bold;
+}
+
+
+.tabela3 {
+    border-collapse: collapse;
+}
+
+.tabela3 td {
+    border: 5px solid black;
+    padding: 5px;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
