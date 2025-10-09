@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exemplo Prático de Linguagem Semântica</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>💡 Linguagem Semântica na Prática</h1>
+    <nav>
+      <ul>
+        <li><a href="#article">Início</a></li>
+        <li><a href="#a">Exemplos</a></li>
+        <li><a href="#">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <article id="article">
+      <h2>O que é Semântica?</h2>
+      <p>
+        Semântica é o estudo do significado das palavras e frases. Ela mostra como o sentido muda de acordo com o contexto, ajudando a entender e interpretar o que é comunicado.
+      </p>
+    </article>
+
+    <section class="exemplo">
+      <h3>🧩 Exemplo 1 – Linguagem comum</h3>
+      <div class="box exemplo1">
+        <p><strong>Frase 1:</strong> Eles são os melhores do <strong>mundo</strong>.</p>
+        <p><strong>Frase 2:</strong> Ele é o Cristiano Ronaldo, ele é o Airton Senna, ele é o Michael Jordan, ele é o Mohhamed Ali.</p>
+        <p>Ambas estão corretas gramaticalmente, mas a segunda frase é a uníca que define quem são os sujeitos</p>
+      </div>
+    </section>
+
+    <section class="exemplo">
+      <h3>💻 Exemplo 2 – HTML semântico</h3>
+      <p>Compare os dois blocos abaixo:</p>
+
+      <div class="grid">
+        <div class="box">
+          <h4>❌ HTML não semântico</h4>
+          <div style="border: 1px solid #aaa; padding: 10px;">
+            <div><b>Título:</b> Meu Site</div>
+            <div><b>Menu:</b> Home | Sobre | Contato</div>
+            <div><b>Conteúdo:</b> Bem-vindo!</div>
+          </div>
+          <p class="legenda">Usa apenas <code>&lt;div&gt;</code> e <code>&lt;b&gt;</code>, sem significado real.</p>
+        </div>
+
+        <div class="box certo">
+          <h4>✅ HTML semântico</h4>
+          <header>Meu Site</header>
+          <nav>Home | Sobre | Contato</nav>
+          <main>Bem-vindo!</main>
+          <footer>Rodapé do site</footer>
+          <p class="legenda">Usa <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code> e <code>&lt;footer&gt;</code>, que possuem significado próprio.</p>
+        </div>
+      </div>
+    </section>
+
+    <aside id="a">
+      <h4>📘 Curiosidade</h4>
+      <p>
+        Quando usamos HTML semântico, o Google entende melhor o conteúdo e o site fica mais acessível para leitores de tela.
+      </p>
+    </aside>
+  </main>
+
+  <footer>
+    <p>Feito por Rodrigo</p>
+  </footer>
+
+</body>
+</html>
