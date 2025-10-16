@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Portfólio</title>
+    <link rel="stylesheet" href="ia2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <!-- Cabeçalho (Header) -->
+    <header>
+        <div class="container">
+            <h1>Meu Nome</h1>
+            <nav>
+                <ul>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#projetos">Projetos</a></li>
+                    <li><a href="#habilidades">Habilidades</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Seção Sobre Mim -->
+    <section id="sobre" class="container">
+        <div class="profile-image">
+            <img src="img/foto-perfil.jpg" alt="Foto de Perfil">
+        </div>
+        <div class="profile-text">
+            <h2>Sobre Mim</h2>
+            <p>
+                Uma breve descrição sobre você, suas paixões e objetivos.  Inclua sua experiência, áreas de interesse e o que você busca profissionalmente.
+            </p>
+            <p>
+                Mais detalhes sobre suas qualificações e conquistas.
+            </p>
+        </div>
+    </section>
+
+    <!-- Seção Projetos -->
+    <section id="projetos" class="container">
+        <h2>Meus Projetos</h2>
+        <div class="projects-grid">
+            <div class="project-item">
+                <img src="img/projeto1.png" alt="Projeto 1">
+                <h3>Projeto 1</h3>
+                <p>Descrição breve do projeto 1.</p>
+                <a href="#" target="_blank">Ver Detalhes</a>
+            </div>
+            <div class="project-item">
+                <img src="img/projeto2.png" alt="Projeto 2">
+                <h3>Projeto 2</h3>
+                <p>Descrição breve do projeto 2.</p>
+                <a href="#" target="_blank">Ver Detalhes</a>
+            </div>
+            <!-- Adicione mais projetos aqui -->
+        </div>
+    </section>
+
+   <!-- Seção Habilidades -->
+    <section id="habilidades" class="container">
+        <h2>Habilidades</h2>
+        <div class="skills-list">
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>React</li>
+                <li>Node.js</li>
+                <li>Banco de Dados (ex: PostgreSQL, MongoDB)</li>
+                <li>Git/GitHub</li>
+                <!-- Adicione mais habilidades aqui -->
+            </ul>
+        </div>
+    </section>
+
+    <!-- Seção Contato -->
+    <section id="contato" class="container">
+        <h2>Contato</h2>
+        <p>Entre em contato comigo!</p>
+        <div class="contact-form">
+            <form action="#" method="post"> <!-- Substitua '#' pela sua rota de envio de email -->
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="mensagem">Mensagem:</label>
+                <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+
+        <div class="social-links">
+            <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+            <!-- Adicione mais links para suas redes sociais -->
+        </div>
+    </section>
+
+    <!-- Rodapé (Footer) -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Meu Portfólio. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

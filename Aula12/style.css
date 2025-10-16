@@ -1,0 +1,23 @@
+/*Tudo que vai mudar no conteudo inteiro do body*/
+body { font-family: Arial; margin: 0; }
+
+/*Tudo que eu estilizei no header/cabeçario e footer/rodapé*/
+header, footer { background: #333; color: #fff; text-align: center; padding: 10px; }
+
+/*Tudo que foi alterado no nav a*/
+nav a { color:
+     #fff; margin: 0 10px; text-decoration: none; 
+    }
+
+nav a:hover
+{text-decoration: underline;}
+
+
+main { padding: 20px;}
+
+
+article { background: #f0f0f0; padding: 10px; border-radius: 8px; }
+
+figure {
+    margin: 15px auto; 
+}

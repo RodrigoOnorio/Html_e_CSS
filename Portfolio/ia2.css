@@ -1,0 +1,206 @@
+/* Estilos Globais */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px 0;
+}
+
+/* Cabeçalho */
+header {
+    background: #333;
+    color: #fff;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+header h1 {
+    margin: 0;
+    float: left;
+}
+
+header nav {
+    float: right;
+}
+
+header nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+header nav li {
+    display: inline;
+    margin-left: 20px;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+/* Seção Sobre Mim */
+#sobre {
+    display: flex;
+    align-items: center;
+    padding: 40px 0;
+}
+
+#sobre .profile-image {
+    width: 30%;
+    margin-right: 30px;
+}
+
+#sobre .profile-image img {
+    width: 100%;
+    border-radius: 50%; /* Para deixar a imagem redonda */
+}
+
+#sobre .profile-text {
+    width: 70%;
+}
+
+/* Seção Projetos */
+#projetos {
+    background: #fff;
+    padding: 40px 0;
+}
+
+#projetos .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Cria colunas responsivas */
+    gap: 20px;
+}
+
+#projetos .project-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+}
+
+#projetos .project-item img {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* Seção Habilidades */
+#habilidades {
+    padding: 40px 0;
+    background-color: #f4f4f4;
+}
+
+#habilidades .skills-list ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#habilidades .skills-list li {
+    margin: 10px;
+    padding: 8px 15px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+}
+
+/* Seção Contato */
+#contato {
+    background: #fff;
+    padding: 40px 0;
+}
+
+#contato .contact-form {
+    width: 60%;
+    margin: auto;
+}
+
+#contato .contact-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#contato .contact-form input[type="text"],
+#contato .contact-form input[type="email"],
+#contato .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* Garante que o padding não aumenta o tamanho total do elemento */
+}
+
+#contato .contact-form button {
+    background: #333;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#contato .social-links {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#contato .social-links a {
+    display: inline-block;
+    margin: 0 10px;
+    font-size: 24px;
+    color: #333;
+}
+
+/* Rodapé */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* Media Queries (Responsividade) */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+
+    header h1, header nav {
+        float: none;
+        text-align: center;
+    }
+
+    header nav li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    #sobre {
+        flex-direction: column;
+    }
+
+    #sobre .profile-image, #sobre .profile-text {
+        width: 100%;
+        text-align: center;
+        margin-right: 0;
+    }
+
+    #contato .contact-form {
+        width: 90%;
+    }
+}

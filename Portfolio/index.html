@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfólio - Rodrigo</title>
+  <meta name="description" content="Portfólio profissional com projetos, habilidades e contato." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="#">Seu Nome</a>
+      <nav class="nav" aria-label="Principal">
+        <ul class="nav-list">
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#habilidades">Habilidades</a></li>
+          <li><a href="#projetos">Projetos</a></li>
+          <li><a href="#experiencia">Experiência</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="inicio">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h1>Olá, eu sou <span class="mark">Seu Nome</span></h1>
+          <p class="subtitle">Desenvolvedor Front-end | HTML, CSS, JavaScript</p>
+          <div class="actions">
+            <a class="btn primary" href="#contato">Fale comigo</a>
+            <a class="btn outline" href="docs/CV.pdf" download>Baixar CV</a>
+          </div>
+        </div>
+        <figure class="hero-photo">
+          <img src="assets/foto-perfil.jpg" alt="Foto de Seu Nome" />
+        </figure>
+      </div>
+    </section>
+
+    <!-- Sobre -->
+    <section class="section" id="sobre">
+      <div class="container grid two">
+        <div>
+          <h2>Sobre mim</h2>
+          <p>
+            Sou um desenvolvedor focado em criar interfaces acessíveis, rápidas e responsivas.
+            Tenho experiência em HTML semântico, CSS moderno (Flexbox, Grid) e boas práticas de UI.
+          </p>
+          <p>
+            Gosto de transformar ideias em experiências digitais claras e objetivas, com atenção a detalhes
+            e foco na usabilidade.
+          </p>
+          <ul class="about-list">
+            <li><strong>Cidade:</strong> Sua Cidade/UF</li>
+            <li><strong>Email:</strong> <a href="mailto:voce@email.com">akat@email.com</a></li>
+            <li><strong>Disponível para:</strong> Estágio | CLT | PJ | Freelancer</li>
+          </ul>
+        </div>
+        <div class="about-card">
+          <h3>Destaques</h3>
+          <ul>
+            <li>Boas práticas de semântica e acessibilidade</li>
+            <li>CSS moderno: Grid, Flexbox, Animações</li>
+            <li>Versionamento com Git e GitHub</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Habilidades -->
+    <section class="section" id="habilidades">
+      <div class="container">
+        <h2>Habilidades</h2>
+        <div class="skills">
+          <div class="skill">
+            <div class="skill-top">
+              <span>HTML</span>
+              <span class="skill-val">90%</span>
+            </div>
+            <div class="bar"><span style="width: 90%"></span></div>
+          </div>
+          <div class="skill">
+            <div class="skill-top">
+              <span>CSS</span>
+              <span class="skill-val">85%</span>
+            </div>
+            <div class="bar"><span style="width: 85%"></span></div>
+          </div>
+          <div class="skill">
+            <div class="skill-top">
+              <span>JavaScript</span>
+              <span class="skill-val">70%</span>
+            </div>
+            <div class="bar"><span style="width: 70%"></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projetos -->
+    <section class="section" id="projetos">
+      <div class="container">
+        <h2>Projetos</h2>
+        <div class="grid three cards">
+          <article class="card">
+            <figure class="card-media">
+              <img src="assets/projeto1.jpg" alt="Screenshot do Projeto 1" />
+            </figure>
+            <div class="card-body">
+              <h3>Projeto 1</h3>
+              <p>Descrição breve do projeto, principais funcionalidades e tecnologias utilizadas.</p>
+              <ul class="tags">
+                <li>HTML</li><li>CSS</li><li>JS</li>
+              </ul>
+            </div>
+            <div class="card-actions">
+              <a class="btn sm" href="#" target="_blank" rel="noopener">Ver Demo</a>
+              <a class="btn sm outline" href="#" target="_blank" rel="noopener">Código</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <figure class="card-media">
+              <img src="assets/projeto2.jpg" alt="Screenshot do Projeto 2" />
+            </figure>
+            <div class="card-body">
+              <h3>Projeto 2</h3>
+              <p>Descrição breve do projeto, principais funcionalidades e tecnologias utilizadas.</p>
+              <ul class="tags">
+                <li>HTML</li><li>CSS</li>
+              </ul>
+            </div>
+            <div class="card-actions">
+              <a class="btn sm" href="#" target="_blank" rel="noopener">Ver Demo</a>
+              <a class="btn sm outline" href="#" target="_blank" rel="noopener">Código</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <figure class="card-media">
+              <img src="assets/projeto3.jpg" alt="Screenshot do Projeto 3" />
+            </figure>
+            <div class="card-body">
+              <h3>Projeto 3</h3>
+              <p>Descrição breve do projeto, principais funcionalidades e tecnologias utilizadas.</p>
+              <ul class="tags">
+                <li>HTML</li><li>CSS</li><li>Acessibilidade</li>
+              </ul>
+            </div>
+            <div class="card-actions">
+              <a class="btn sm" href="#" target="_blank" rel="noopener">Ver Demo</a>
+              <a class="btn sm outline" href="#" target="_blank" rel="noopener">Código</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experiência -->
+    <section class="section" id="experiencia">
+      <div class="container">
+        <h2>Experiência</h2>
+        <div class="timeline">
+          <div class="item">
+            <div class="item-head">
+              <h3>Empresa X</h3>
+              <span class="periodo">2023 - Atual</span>
+            </div>
+            <p>Atuação no desenvolvimento de interfaces responsivas, manutenção de código e colaboração com equipes multidisciplinares.</p>
+          </div>
+          <div class="item">
+            <div class="item-head">
+              <h3>Curso/Projeto Relevante</h3>
+              <span class="periodo">2022</span>
+            </div>
+            <p>Projeto acadêmico com foco em boas práticas de HTML e CSS, incluindo semântica e acessibilidade.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contato -->
+    <section class="section" id="contato">
+      <div class="container">
+        <h2>Contato</h2>
+        <div class="grid two contact">
+          <div>
+            <p>
+              Interessado em trabalhar comigo? Envie um email ou mensagem.
+            </p>
+            <ul class="contact-list">
+              <li><strong>Email:</strong> <a href="mailto:voce@email.com">voce@email.com</a></li>
+              <li><strong>WhatsApp:</strong> <a href="https://wa.me/5500000000000" target="_blank" rel="noopener">+55 00 00000-0000</a></li>
+              <li><strong>GitHub:</strong> <a href="https://github.com/seuusuario" target="_blank" rel="noopener">@seuusuario</a></li>
+              <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/seuusuario/" target="_blank" rel="noopener">/in/seuusuario</a></li>
+            </ul>
+          </div>
+          <form class="contact-form" action="mailto:voce@email.com" method="post" enctype="text/plain">
+            <label>
+              Nome
+              <input type="text" name="nome" placeholder="Seu nome" required />
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" placeholder="seu@email.com" required />
+            </label>
+            <label>
+              Mensagem
+              <textarea name="mensagem" rows="4" placeholder="Escreva sua mensagem" required></textarea>
+            </label>
+            <button class="btn primary" type="submit">Enviar</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Seu Nome. Todos os direitos reservados.</p>
+      <ul class="social">
+        <li><a href="https://github.com/seuusuario" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/seuusuario/" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    // Atualiza ano no rodapé sem depender de JS externo
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
