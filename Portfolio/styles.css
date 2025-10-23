@@ -330,3 +330,37 @@ html[data-theme="light"] ::-webkit-scrollbar-thumb:hover{ background: linear-gra
   html { scroll-behavior: auto; }
   * { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: 0ms !important; }
 }
+
+/* === Tema escuro explícito (mesmo visual do padrão) === */
+:root[data-theme="dark"]{
+  --bg: #0b1020;
+  --surface: #0f172a;
+  --muted: #94a3b8;
+  --text: #e2e8f0;
+  --brand: #6366f1; /* primária */
+  --brand-2: #22d3ee; /* secundária */
+  --card: #0e152a;
+  --border: #1f2937;
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+  --radius: 16px;
+  --radius-sm: 12px;
+  --maxw: 1160px;
+  --glass: rgba(17, 24, 39, .55);
+  --glass-2: rgba(99, 102, 241, .10);
+}
+
+/* === Botão de alternância de tema (topo direito) === */
+.theme-toggle {
+  min-width: 44px; /* alvo acessível */
+  padding: 0 12px;
+  line-height: 1;
+  gap: 8px;
+}
+.theme-toggle .icon {
+  font-size: 18px;
+  display: inline-block;
+  transform: translateY(1px);
+}
+
+/* Ajuste no header para lidar bem com 3 itens (logo, nav, toggle) */
+.header-inner { gap: 12px; }

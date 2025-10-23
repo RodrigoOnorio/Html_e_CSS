@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfólio Complexo 3D</title>
+  <meta name="description" content="Portfólio com múltiplas abas, tema claro/escuro e cenas 3D." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    (function(){
+      try {
+        var saved = localStorage.getItem('theme');
+        var prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+        var theme = saved || (prefersLight ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="trae_style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <div class="logo"><span>R</span>Portfólio</div>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="#inicio" class="nav-item active">Início</a></li>
+          <li><a href="#sobre" class="nav-item">Sobre</a></li>
+          <li><a href="#projetos" class="nav-item">Projetos</a></li>
+          <li><a href="#contato" class="nav-item">Contato</a></li>
+          <li><a href="aba1.html" class="nav-item" target="_blank">Aba 1</a></li>
+          <li><a href="aba2.html" class="nav-item" target="_blank">Aba 2</a></li>
+          <li><a href="aba3.html" class="nav-item" target="_blank">Aba 3</a></li>
+        </ul>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema" title="Alternar tema"><i class="fas fa-sun"></i></button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero com Canvas 3D de fundo -->
+    <section class="hero" id="inicio">
+      <canvas id="heroCanvas"></canvas>
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <div class="hero-subtitle">Olá, eu sou</div>
+          <h1 class="hero-title">Rodrigo — Portfólio 3D Complexo</h1>
+          <p class="hero-description">Experiências digitais imersivas com WebGL, animações e design avançado.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#projetos">Ver Projetos</a>
+            <a class="btn outline" href="aba1.html" target="_blank">Abrir Aba 1</a>
+          </div>
+          <div class="hero-social">
+            <a href="#" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sobre -->
+    <section class="section" id="sobre">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Sobre Mim</h2>
+          <div class="section-subtitle">Criando experiências 3D na web</div>
+        </div>
+        <div class="grid two">
+          <div>
+            <p>Sou desenvolvedor front-end com foco em 3D, animações e interatividade, usando WebGL/Three.js para compor cenários e elementos que dão vida a interfaces modernas.</p>
+            <p>Este portfólio demonstra o uso extensivo de CSS, HTML e scripts para organizar múltiplas abas e cenas 3D. O tema é alternável e persistido.</p>
+            <div class="about-stats">
+              <div class="stat"><span>20+</span> Projetos 3D</div>
+              <div class="stat"><span>5+</span> Abas Interativas</div>
+              <div class="stat"><span>1000+</span> Linhas de CSS/HTML</div>
+            </div>
+          </div>
+          <div>
+            <div class="about-card">
+              <h3>Stack</h3>
+              <ul class="stack-list">
+                <li>Three.js, GLSL</li>
+                <li>HTML, CSS, Flex/Grid</li>
+                <li>SVG, A11y, Performance</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projetos -->
+    <section class="section" id="projetos">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Projetos</h2>
+          <div class="section-subtitle">Cenas WebGL e componentes 3D</div>
+        </div>
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-media">
+              <canvas id="cardCanvas1"></canvas>
+            </div>
+            <div class="project-info">
+              <h3>Torus Knot Field</h3>
+              <p>Campo de objetos 3D animados com shaders simples e pós-processamento leve.</p>
+              <a href="aba2.html" class="btn secondary" target="_blank">Ver Aba 2</a>
+            </div>
+          </article>
+          <article class="project-card">
+            <div class="project-media">
+              <canvas id="cardCanvas2"></canvas>
+            </div>
+            <div class="project-info">
+              <h3>Particles Galaxy</h3>
+              <p>Galáxia de partículas com interatividade no mouse e mudança por tema.</p>
+              <a href="aba3.html" class="btn secondary" target="_blank">Ver Aba 3</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contato -->
+    <section class="section" id="contato">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Contato</h2>
+          <div class="section-subtitle">Vamos conversar sobre 3D</div>
+        </div>
+        <div class="grid two contact">
+          <div>
+            <ul class="contact-list">
+              <li><strong>Email:</strong> <a href="mailto:contato@rodrigo.com">contato@rodrigo.com</a></li>
+              <li><strong>GitHub:</strong> <a href="#" target="_blank" rel="noopener">@rodrigo</a></li>
+              <li><strong>LinkedIn:</strong> <a href="#" target="_blank" rel="noopener">/in/rodrigo</a></li>
+            </ul>
+          </div>
+          <form class="contact-form" method="post">
+            <label>
+              Nome
+              <input type="text" name="nome" placeholder="Seu nome" required />
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" placeholder="seu@email.com" required />
+            </label>
+            <label>
+              Mensagem
+              <textarea name="mensagem" rows="4" placeholder="Escreva sua mensagem" required></textarea>
+            </label>
+            <button class="btn primary" type="submit">Enviar</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Rodrigo. Portfólio Complexo 3D.</p>
+      <div class="footer-social">
+        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Three.js CDN -->
+  <script src="https://unpkg.com/three@0.152.2/build/three.min.js"></script>
+  <!-- Scripts -->
+  <script>
+    // Ano no rodapé
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Toggle de tema
+    (function(){
+      var btn = document.getElementById('theme-toggle');
+      var html = document.documentElement;
+      var icon = btn.querySelector('i');
+      function setTheme(theme){
+        html.setAttribute('data-theme', theme);
+        try { localStorage.setItem('theme', theme); } catch(e){}
+        if(theme==='light'){ icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
+        else { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
+      }
+      btn.addEventListener('click', function(){
+        var current = html.getAttribute('data-theme') || 'dark';
+        setTheme(current==='dark' ? 'light' : 'dark');
+      });
+    })();
+
+    // Cena 3D do Hero
+    (function(){
+      var canvas = document.getElementById('heroCanvas');
+      var scene = new THREE.Scene();
+      var camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 1000);
+      var renderer = new THREE.WebGLRenderer({canvas: canvas, antialias: true});
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      camera.position.set(0, 0, 12);
+
+      // Luzes
+      var ambient = new THREE.AmbientLight(0xffffff, 0.6);
+      var dir = new THREE.DirectionalLight(0xffffff, 0.8);
+      dir.position.set(3, 5, 2);
+      scene.add(ambient, dir);
+
+      // Objetos
+      var group = new THREE.Group();
+      var geo = new THREE.TorusKnotGeometry(1, 0.3, 128, 32);
+      var mat = new THREE.MeshStandardMaterial({ color: 0x6c63ff, roughness: 0.4, metalness: 0.6 });
+      for (var i=0;i<20;i++){
+        var m = new THREE.Mesh(geo, mat);
+        m.position.set((Math.random()-0.5)*20, (Math.random()-0.5)*10, (Math.random()-0.5)*10);
+        m.rotation.set(Math.random()*Math.PI, Math.random()*Math.PI, Math.random()*Math.PI);
+        var s = 0.6 + Math.random()*1.5; m.scale.set(s,s,s);
+        group.add(m);
+      }
+      scene.add(group);
+
+      // Resize
+      window.addEventListener('resize', function(){
+        camera.aspect = window.innerWidth/window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+
+      // Tema influencia cor de fundo
+      function updateBg(){
+        var theme = document.documentElement.getAttribute('data-theme');
+        if(theme==='light') renderer.setClearColor(0xf5f7ff, 1);
+        else renderer.setClearColor(0x0f0f14, 1);
+      }
+      updateBg();
+      new MutationObserver(updateBg).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+      // Animação
+      var clock = new THREE.Clock();
+      function animate(){
+        var t = clock.getElapsedTime();
+        group.rotation.y += 0.002;
+        group.rotation.x = Math.sin(t*0.3)*0.2;
+        renderer.render(scene, camera);
+        requestAnimationFrame(animate);
+      }
+      animate();
+    })();
+
+    // Pequenas cenas nos cards
+    (function initCard(id, color){
+      var canvas = document.getElementById(id);
+      var scene = new THREE.Scene();
+      var camera = new THREE.PerspectiveCamera(60, 1, 0.1, 100);
+      var renderer = new THREE.WebGLRenderer({canvas: canvas, antialias: true});
+      var size = 320; renderer.setSize(size, size);
+      camera.position.set(0, 0, 6);
+      var ambient = new THREE.AmbientLight(0xffffff, 0.6);
+      var dir = new THREE.DirectionalLight(0xffffff, 0.8); dir.position.set(2,2,2);
+      scene.add(ambient, dir);
+      var geo = new THREE.IcosahedronGeometry(1.2, 2);
+      var mat = new THREE.MeshStandardMaterial({ color: color, roughness: 0.5, metalness: 0.5 });
+      var mesh = new THREE.Mesh(geo, mat);
+      scene.add(mesh);
+      function loop(){
+        mesh.rotation.x += 0.01; mesh.rotation.y += 0.015;
+        renderer.render(scene, camera); requestAnimationFrame(loop);
+      } loop();
+    })('cardCanvas1', 0xff6584);
+    (function(){
+      var theme = document.documentElement.getAttribute('data-theme');
+      var col = theme==='light' ? 0x111133 : 0x00d9ff;
+      (function initCard(id, color){
+        var canvas = document.getElementById(id);
+        var scene = new THREE.Scene();
+        var camera = new THREE.PerspectiveCamera(60, 1, 0.1, 100);
+        var renderer = new THREE.WebGLRenderer({canvas: canvas, antialias: true});
+        var size = 320; renderer.setSize(size, size); camera.position.set(0, 0, 6);
+        var ambient = new THREE.AmbientLight(0xffffff, 0.6);
+        var dir = new THREE.DirectionalLight(0xffffff, 0.8); dir.position.set(2,2,2);
+        scene.add(ambient, dir);
+        var geo = new THREE.TorusGeometry(1.2, 0.45, 64, 128);
+        var mat = new THREE.MeshStandardMaterial({ color: color, roughness: 0.4, metalness: 0.6 });
+        var mesh = new THREE.Mesh(geo, mat); scene.add(mesh);
+        function loop(){ mesh.rotation.x += 0.01; mesh.rotation.y += 0.02; renderer.render(scene, camera); requestAnimationFrame(loop);} loop();
+      })('cardCanvas2', col);
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aba 2 — Cena 3D (TorusKnot & Nebulosa)</title>
+  <meta name="description" content="Cena 3D com TorusKnot animado e nebulosa de pontos em Three.js" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    (function(){
+      try {
+        var saved = localStorage.getItem('theme');
+        var prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+        var theme = saved || (prefersLight ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="trae_style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <div class="logo"><span>R</span>Aba 2</div>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="trae.html" class="nav-item">Início</a></li>
+          <li><a href="aba1.html" class="nav-item">Aba 1</a></li>
+        </ul>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema" title="Alternar tema"><i class="fas fa-sun"></i></button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="cena">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">TorusKnot e Nebulosa em Movimento</h2>
+          <p class="section-subtitle">Cores dinâmicas e partículas orbitando. Tema claro/escuro ajusta o fundo.</p>
+        </div>
+        <div class="grid.two">
+          <div>
+            <div class="card-3d">
+              <div class="header d-flex justify-between items-center">
+                <div class="chips">
+                  <span class="chip">Three.js</span>
+                  <span class="chip active">TorusKnot</span>
+                </div>
+                <div class="scene-overlay">
+                  <span class="scene-badge">Metalness 0.6</span>
+                  <span class="scene-badge">Roughness 0.4</span>
+                </div>
+              </div>
+              <div class="content" style="position:relative;">
+                <canvas id="aba2Canvas" class="canvas-3d" style="height: 420px;"></canvas>
+              </div>
+              <div class="footer">
+                <button class="btn outline" id="randomize">Randomizar Cor</button>
+                <button class="btn secondary" id="boost">Impulsionar Partículas</button>
+              </div>
+            </div>
+          </div>
+          <aside class="sidebar">
+            <h3>Detalhes</h3>
+            <div class="stack-list">
+              <span>Geometria: TorusKnot</span>
+              <span>Partículas: Nebulosa com ruído</span>
+              <span>Interação: Scroll para zoom</span>
+              <span>Layout: Grid duas colunas</span>
+            </div>
+            <hr />
+            <div class="accordion">
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <span>FAQ</span>
+                  <button class="btn icon"><i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="accordion-content">
+                  <p class="small">Esta cena usa materiais padrão com iluminação ambiente e direcional, e partículas geradas proceduralmente.</p>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> Rodrigo — Aba 2</div>
+      <div class="breadcrumb"><a href="trae.html">Portfólio</a><span class="sep">/</span><span>Aba 2</span></div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/three@0.152.2/build/three.min.js"></script>
+  <script>
+    // Ano
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Toggle de tema
+    (function(){
+      var btn = document.getElementById('theme-toggle');
+      var html = document.documentElement;
+      var icon = btn.querySelector('i');
+      function setTheme(theme){
+        html.setAttribute('data-theme', theme);
+        try { localStorage.setItem('theme', theme); } catch(e){}
+        if(theme==='light'){ icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
+        else { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
+      }
+      setTheme(html.getAttribute('data-theme') || 'dark');
+      btn.addEventListener('click', function(){
+        var current = html.getAttribute('data-theme') || 'dark';
+        setTheme(current==='dark' ? 'light' : 'dark');
+      });
+    })();
+
+    // Cena TorusKnot + Nebulosa
+    (function(){
+      var canvas = document.getElementById('aba2Canvas');
+      var scene = new THREE.Scene();
+      var camera = new THREE.PerspectiveCamera(60, canvas.clientWidth / 420, 0.1, 1000);
+      var renderer = new THREE.WebGLRenderer({canvas: canvas, antialias: true});
+      renderer.setSize(canvas.clientWidth, 420);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      camera.position.set(0, 0.6, 8);
+
+      // Luzes
+      var ambient = new THREE.AmbientLight(0xffffff, 0.7);
+      var dir = new THREE.DirectionalLight(0xffffff, 0.8); dir.position.set(3,4,2);
+      scene.add(ambient, dir);
+
+      // TorusKnot
+      var geo = new THREE.TorusKnotGeometry(1.6, 0.45, 256, 64);
+      var mat = new THREE.MeshStandardMaterial({ color: 0x6c63ff, roughness: 0.4, metalness: 0.6 });
+      var mesh = new THREE.Mesh(geo, mat); scene.add(mesh);
+
+      // Nebulosa
+      var nCount = 1600;
+      var pos = new Float32Array(nCount*3);
+      for(var i=0;i<nCount;i++){
+        var r = (Math.random()*0.6 + 0.4) * 14;
+        var a = Math.random() * Math.PI * 2;
+        var z = (Math.random()-0.5) * 12;
+        pos[i*3] = Math.cos(a) * r;
+        pos[i*3+1] = Math.sin(a) * r * 0.6;
+        pos[i*3+2] = z;
+      }
+      var nebGeo = new THREE.BufferGeometry(); nebGeo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+      var nebMat = new THREE.PointsMaterial({ color: 0x00d9ff, size: 0.06 });
+      var neb = new THREE.Points(nebGeo, nebMat); scene.add(neb);
+
+      // Fundo por tema
+      function updateBg(){
+        var theme = document.documentElement.getAttribute('data-theme');
+        if(theme==='light') renderer.setClearColor(0xf5f7ff, 1);
+        else renderer.setClearColor(0x0f0f14, 1);
+      }
+      updateBg();
+      new MutationObserver(updateBg).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+      // Interação: zoom no scroll
+      canvas.addEventListener('wheel', function(e){
+        e.preventDefault();
+        var d = Math.sign(e.deltaY);
+        camera.position.z = Math.max(4, Math.min(16, camera.position.z + d));
+      }, { passive: false });
+
+      // Controles
+      document.getElementById('randomize').addEventListener('click', function(){
+        var col = new THREE.Color().setHSL(Math.random(), 0.7, 0.55);
+        mesh.material.color.copy(col);
+      });
+      var speed = 0.01;
+      document.getElementById('boost').addEventListener('click', function(){ speed = (speed<0.05? 0.05 : 0.01); });
+
+      // Resize
+      function onResize(){
+        var w = canvas.clientWidth; var h = 420;
+        renderer.setSize(w, h);
+        camera.aspect = w/h; camera.updateProjectionMatrix();
+      }
+      window.addEventListener('resize', onResize);
+
+      // Loop
+      var clock = new THREE.Clock();
+      function animate(){
+        var t = clock.getElapsedTime();
+        mesh.rotation.x += speed*1.2; mesh.rotation.y += speed*1.8;
+        neb.rotation.z = t*0.02;
+        renderer.render(scene, camera);
+        requestAnimationFrame(animate);
+      }
+      animate();
+    })();
+
+    // Accordion simples
+    (function(){
+      var acc = document.querySelector('.accordion');
+      var item = acc.querySelector('.accordion-item');
+      var header = item.querySelector('.accordion-header');
+      header.addEventListener('click', function(){ item.classList.toggle('open'); });
+    })();
+  </script>
+</body>
+</html>

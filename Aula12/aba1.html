@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aba 1 — Cena 3D (Cubo & Partículas)</title>
+  <meta name="description" content="Cena 3D com cubo interativo e partículas em Three.js" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    (function(){
+      try {
+        var saved = localStorage.getItem('theme');
+        var prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+        var theme = saved || (prefersLight ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="trae_style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <div class="logo"><span>R</span>Aba 1</div>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="trae.html" class="nav-item">Início</a></li>
+          <li><a href="aba2.html" class="nav-item">Aba 2</a></li>
+        </ul>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema" title="Alternar tema"><i class="fas fa-sun"></i></button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="cena">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Cubo Interativo e Campo de Partículas</h2>
+          <p class="section-subtitle">Use o mouse para orbitar. Tema claro/escuro altera o fundo.</p>
+        </div>
+        <div class="card-3d">
+          <div class="header d-flex justify-between items-center">
+            <div class="chips">
+              <span class="chip">Three.js</span>
+              <span class="chip active">Canvas</span>
+              <span class="chip">Interativo</span>
+            </div>
+            <div class="scene-overlay">
+              <span class="scene-badge">FPS Dinâmico</span>
+              <span class="scene-badge">Orbit</span>
+            </div>
+          </div>
+          <div class="content" style="position:relative;">
+            <canvas id="aba1Canvas" class="canvas-3d" style="height: 520px;"></canvas>
+          </div>
+          <div class="footer">
+            <button class="btn secondary" id="reset">Resetar Orbita</button>
+            <button class="btn outline" id="colorize">Colorir Cubo</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> Rodrigo — Aba 1</div>
+      <div class="breadcrumb"><a href="trae.html">Portfólio</a><span class="sep">/</span><span>Aba 1</span></div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/three@0.152.2/build/three.min.js"></script>
+  <script>
+    // Ano no rodapé
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Toggle de tema com persistência
+    (function(){
+      var btn = document.getElementById('theme-toggle');
+      var html = document.documentElement;
+      var icon = btn.querySelector('i');
+      function setTheme(theme){
+        html.setAttribute('data-theme', theme);
+        try { localStorage.setItem('theme', theme); } catch(e){}
+        if(theme==='light'){ icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
+        else { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
+      }
+      // Ajusta ícone ao carregar
+      setTheme(html.getAttribute('data-theme') || 'dark');
+      btn.addEventListener('click', function(){
+        var current = html.getAttribute('data-theme') || 'dark';
+        setTheme(current==='dark' ? 'light' : 'dark');
+      });
+    })();
+
+    // Cena 3D: Cubo + Partículas com orbit manual
+    (function(){
+      var canvas = document.getElementById('aba1Canvas');
+      var scene = new THREE.Scene();
+      var camera = new THREE.PerspectiveCamera(60, canvas.clientWidth / 520, 0.1, 1000);
+      var renderer = new THREE.WebGLRenderer({canvas: canvas, antialias: true});
+      renderer.setSize(canvas.clientWidth, 520);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      camera.position.set(0, 1.2, 6);
+
+      // Luzes
+      var ambient = new THREE.AmbientLight(0xffffff, 0.7);
+      var dir = new THREE.DirectionalLight(0xffffff, 0.8); dir.position.set(2,2,2);
+      scene.add(ambient, dir);
+
+      // Cubo
+      var cubeGeo = new THREE.BoxGeometry(1.6, 1.6, 1.6);
+      var cubeMat = new THREE.MeshStandardMaterial({ color: 0x6c63ff, roughness: 0.35, metalness: 0.5 });
+      var cube = new THREE.Mesh(cubeGeo, cubeMat);
+      scene.add(cube);
+
+      // Partículas
+      var pCount = 1200;
+      var positions = new Float32Array(pCount*3);
+      for(var i=0;i<pCount;i++){
+        positions[i*3] = (Math.random()-0.5)*20;
+        positions[i*3+1] = (Math.random()-0.5)*10;
+        positions[i*3+2] = (Math.random()-0.5)*20;
+      }
+      var pGeo = new THREE.BufferGeometry();
+      pGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      var pMat = new THREE.PointsMaterial({ color: 0x00d9ff, size: 0.05 });
+      var points = new THREE.Points(pGeo, pMat);
+      scene.add(points);
+
+      // Fundo depende de tema
+      function updateBg(){
+        var theme = document.documentElement.getAttribute('data-theme');
+        if(theme==='light') renderer.setClearColor(0xf5f7ff, 1);
+        else renderer.setClearColor(0x0f0f14, 1);
+      }
+      updateBg();
+      new MutationObserver(updateBg).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+      // Interação de orbitar
+      var isDown=false, mx=0, my=0, yaw=0, pitch=0;
+      canvas.addEventListener('pointerdown', function(e){ isDown=true; mx=e.clientX; my=e.clientY; });
+      window.addEventListener('pointerup', function(){ isDown=false; });
+      window.addEventListener('pointermove', function(e){
+        if(!isDown) return;
+        var dx = e.clientX - mx; var dy = e.clientY - my; mx=e.clientX; my=e.clientY;
+        yaw += dx * 0.005; pitch += dy * 0.005; pitch = Math.max(-1.2, Math.min(1.2, pitch));
+      });
+
+      // Reset e colorize
+      document.getElementById('reset').addEventListener('click', function(){ yaw=0; pitch=0; });
+      document.getElementById('colorize').addEventListener('click', function(){
+        var col = new THREE.Color().setHSL(Math.random(), 0.7, 0.6);
+        cube.material.color.copy(col);
+      });
+
+      // Resize
+      function onResize(){
+        var w = canvas.clientWidth; var h = 520;
+        renderer.setSize(w, h);
+        camera.aspect = w/h; camera.updateProjectionMatrix();
+      }
+      window.addEventListener('resize', onResize);
+
+      // Loop
+      var clock = new THREE.Clock();
+      function animate(){
+        var t = clock.getElapsedTime();
+        cube.rotation.x = t*0.6; cube.rotation.y = t*0.8;
+        points.rotation.y = t*0.1;
+        var r = 6; camera.position.x = Math.sin(yaw)*r*Math.cos(pitch);
+        camera.position.y = Math.sin(pitch)*r*0.6 + 1.2;
+        camera.position.z = Math.cos(yaw)*r*Math.cos(pitch);
+        camera.lookAt(0,0,0);
+        renderer.render(scene, camera);
+        requestAnimationFrame(animate);
+      }
+      animate();
+    })();
+  </script>
+</body>
+</html>
