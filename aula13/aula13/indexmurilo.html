@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Design de interiores</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="icon"
+        href="https://png.pngtree.com/png-vector/20250613/ourmid/pngtree-cheerful-blue-fluffy-monster-with-pink-horns-and-big-smile-png-image_16493064.png"
+        type="image/png" sizes="16x16 32x32">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-size: 20px;
+        }
+
+        p {
+            font-size: 15px;
+        }
+
+        /* Layout dos projetos */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: #fff;
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-image {
+            height: 220px;
+            border-radius: 16px 16px 0 0;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .project-description {
+            color: #555;
+            margin: 0.5rem 0 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: #f1f1f1;
+            border-radius: 20px;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.85rem;
+            color: rgb(51, 136, 221);
+        }
+
+        /* Footer modernizado */
+        footer {
+            background-color: rgb(42, 102, 199);
+            color: white;
+            padding: 60px 20px;
+            margin-top: 80px;
+        }
+
+        footer .footer-container {
+            max-width: 1100px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        footer .footer-left {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        footer .footer-right {
+            flex: 1;
+            min-width: 220px;
+            text-align: right;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            margin: 4px 0;
+            transition: color 0.2s ease;
+        }
+
+        footer a:hover {
+            color: #d0e4ff;
+        }
+
+        footer hr {
+            border: 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            margin: 40px 0;
+        }
+
+        footer p {
+            text-align: center;
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        /* Ajuste geral */
+        .w3-row-padding .w3-col {
+            border-radius: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-blue w3-collapse w3-top w3-large w3-padding"
+        style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+        <a href="javascript:void(0)" onclick="w3_close()"
+            class="w3-button w3-hide-large w3-display-topleft w3-hover-white" style="width:100%;font-size:22px">Fechar
+            Menu</a>
+        <div class="w3-container">
+            <h3 class="w3-padding-64"><b>Projeto de<br>interiores</b></h3>
+        </div>
+        <aside class="w3-bar-block">
+            <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Inicio</a>
+            <a href="#showcase" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Vitrine</a>
+            <a href="#services" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Serviços</a>
+            <a href="#designers" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Designers</a>
+            <a href="#packages" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Pacotes</a>
+            <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contato</a>
+        </aside>
+    </nav>
+
+    <!-- Top menu (mobile) -->
+    <header class="w3-container w3-top w3-hide-large w3-blue w3-xlarge w3-padding">
+        <a href="javascript:void(0)" class="w3-button w3-blue w3-margin-right w3-hover-white" onclick="w3_open()">☰</a>
+        <span>Design de interiores</span>
+    </header>
+
+    <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+
+    <!-- Conteúdo principal -->
+    <div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+        <!-- Cabeçalho -->
+        <div class="w3-container" style="margin-top:80px" id="showcase">
+            <h1 class="w3-jumbo"><b>Design de Interiores</b></h1>
+            <h1 class="w3-xxxlarge w3-text-blue"><b>Vitrine.</b></h1>
+            <hr style="width:50px;border:5px solid rgb(42, 102, 199)" class="w3-round">
+        </div>
+
+        <!-- Projetos -->
+        <div class="w3-container" id="projetos" style="margin-top:75px">
+            <p>Explore nossos projetos exclusivos que unem criatividade, funcionalidade e elegância.</p>
+
+            <div class="projects-grid">
+
+                <!-- Projeto 1 -->
+                <div class="project-card">
+                    <div class="project-image"
+                        style="background-image: url('https://blog.ulbra.br/wp-content/uploads/2022/07/Hist%C3%B3ria-do-design-de-interiores-desde-o-Antigo-Egito-at%C3%A9-os-dias-de-hoje.jpg');">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Amostras de cores e materiais</h3>
+                        <p class="project-description">Cores, texturas e formas que traduzem o estilo único de cada
+                            cliente.</p>
+                        <div class="project-tags">
+                            <span class="tag">Criativo</span>
+                            <span class="tag">2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto 2 -->
+                <div class="project-card">
+                    <div class="project-image"
+                        style="background-image: url('https://tuiuti.edu.br/wp-content/uploads/2023/01/design-de-interiores-2.jpg');">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Loft Urbano</h3>
+                        <p class="project-description">Espaço industrial moderno com elementos contemporâneos e soluções
+                            inteligentes.</p>
+                        <div class="project-tags">
+                            <span class="tag">Comercial</span>
+                            <span class="tag">Industrial</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto 3 -->
+                <div class="project-card">
+                    <div class="project-image"
+                        style="background-image: url('https://images.educamaisbrasil.com.br/content/noticias/design-de-interiores-projeta-moveis_g.jpg');">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Apartamento Moderno</h3>
+                        <p class="project-description">Espaços sofisticados que combinam iluminação suave e mobiliário
+                            elegante.</p>
+                        <div class="project-tags">
+                            <span class="tag">Urbano</span>
+                            <span class="tag">Contemporâneo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto 4 -->
+                <div class="project-card">
+                    <div class="project-image"
+                        style="background-image: url('https://arquitetura.vivadecora.com.br/wp-content/uploads/2022/02/imagem_2025-01-24_095125535-1024x680.png');">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Lar com Estilo</h3>
+                        <p class="project-description">Design minimalista com integração entre interior e exterior.</p>
+                        <div class="project-tags">
+                            <span class="tag">Residencial</span>
+                            <span class="tag">2025</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rodapé -->
+        <footer>
+            <div class="footer-container">
+                <div class="footer-left">
+                    <h3>Design de Interiores</h3>
+                    <p>Transformando ambientes em experiências únicas.<br>
+                        Cada detalhe reflete o estilo e a personalidade de quem vive nele.</p>
+                </div>
+                <div class="footer-right">
+                    <h4>Navegação</h4>
+                    <a href="#showcase">Início</a><br>
+                    <a href="#services">Serviços</a><br>
+                    <a href="#designers">Equipe</a><br>
+                    <a href="#packages">Pacotes</a><br>
+                    <a href="#contact">Contato</a>
+                </div>
+            </div>
+            <hr>
+            <p>&copy; 2025 Design de Interiores. Todos os direitos reservados.<br>
+                Desenvolvido por <b>Murilo Halax</b> e equipe.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("myOverlay").style.display = "block";
+        }
+
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("myOverlay").style.display = "none";
+        }
+    </script>
+</body>
+
+</html>

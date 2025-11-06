@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+document
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="icon" href="https://blog.ebaconline.com.br/blog/wp-content/uploads/2021/04/andrea-davis-vowxf7lsan0-unsplash-scaled.jpg" type="image/png" sizes="16x16 32x32">
+    <style>
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        body {
+            font-size: 16px;
+        }
+
+        .w3-half img {
+            margin-bottom: -6px;
+            margin-top: 16px;
+            opacity: 0.8;
+            cursor: pointer
+        }
+
+        .w3-half img:hover {
+            opacity: 1
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: #fff;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image {
+            height: 200px;
+            background: #ccc;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .project-description {
+            color: #555;
+            margin: 0.5rem 0 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: #f1f1f1;
+            border-radius: 20px;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.85rem;
+            color: rgb(51, 136, 221);
+        }
+        .w3-row-padding .w3-col {
+            border-radius: 16px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-blue w3-collapse w3-top w3-large w3-padding"
+        style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+        <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft"
+            style="width:100%;font-size:22px">Fechar Menu</a>
+        <div class="w3-container">
+            <h3 class="w3-padding-64"><b>Projeto de<br>interiores</b></h3>
+        </div>
+        <aside class="w3-bar-block">
+            <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Inicio</a>
+            <a href="#showcase" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Vitrine</a>
+            <a href="#services" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Servicos</a>
+            <a href="#designers" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Designers</a>
+            <a href="#packages" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Pacote</a>
+            <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contato</a>
+        </aside>
+    </nav>
+
+    <!-- Top menu on small screens -->
+    <header class="w3-container w3-top w3-hide-large w3-blue w3-xlarge w3-padding">
+        <a href="javascript:void(0)" class="w3-button w3-blue w3-margin-right" onclick="w3_open()">☰</a>
+        <span>Design de interiores</span>
+    </header>
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu"
+        id="myOverlay"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+        <!-- Header -->
+        <div class="w3-container" style="margin-top:80px" id="showcase">
+            <h1 class="w3-jumbo"><b>Design de Interiores</b></h1>
+            <h1 class="w3-xxxlarge w3-text-blue"><b>Vitrine.</b></h1>
+            <hr style="width:50px;border:5px solid rgb(42, 102, 199)" class="w3-round">
+        </div>
+<!-- Projetos -->
+<div class="w3-container" id="projetos" style="margin-top:75px">
+    <p>Explore nossos projetos exclusivos que unem criatividade, funcionalidade e elegância.</p>
+
+    <div class="projects-grid">
+
+        <!-- Projeto 1 -->
+        <div class="project-card" onclick="onClickImage('https://blog.ulbra.br/wp-content/uploads/2022/07/Hist%C3%B3ria-do-design-de-interiores-desde-o-Antigo-Egito-at%C3%A9-os-dias-de-hoje.jpg', 'Casa de Verão')">
+            <div class="project-image"
+                style="background-image: url('https://blog.ulbra.br/wp-content/uploads/2022/07/Hist%C3%B3ria-do-design-de-interiores-desde-o-Antigo-Egito-at%C3%A9-os-dias-de-hoje.jpg'); background-size: cover; background-position: center;"></div>
+            <div class="project-content">
+                <h3 class="project-title">Casa de Verão</h3>
+                <p class="project-description">
+                    Design minimalista com integração perfeita entre interior e exterior, criando um ambiente de tranquilidade.
+                </p>
+                <div class="project-tags">
+                    <span class="tag">Residencial</span>
+                    <span class="tag">Minimalista</span>
+                    <span class="tag">2024</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projeto 2 -->
+        <div class="project-card" onclick="onClickImage('https://tuiuti.edu.br/wp-content/uploads/2023/01/design-de-interiores-2.jpg', 'Loft Urbano')">
+            <div class="project-image"
+                style="background-image: url('https://tuiuti.edu.br/wp-content/uploads/2023/01/design-de-interiores-2.jpg'); background-size: cover; background-position: center;"></div>
+            <div class="project-content">
+                <h3 class="project-title">Loft Urbano</h3>
+                <p class="project-description">
+                    Espaço industrial moderno com elementos contemporâneos e soluções inteligentes de armazenamento.
+                </p>
+                <div class="project-tags">
+                    <span class="tag">Comercial</span>
+                    <span class="tag">Industrial</span>
+                    <span class="tag">2025</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projeto 3 -->
+        <div class="project-card" onclick="onClickImage('https://images.educamaisbrasil.com.br/content/noticias/design-de-interiores-projeta-moveis_g.jpg', 'Apartamento Moderno')">
+            <div class="project-image"
+                style="background-image: url('https://images.educamaisbrasil.com.br/content/noticias/design-de-interiores-projeta-moveis_g.jpg'); background-size: cover; background-position: center;"></div>
+            <div class="project-content">
+                <h3 class="project-title">Apartamento Moderno</h3>
+                <p class="project-description">
+                    Espaço sofisticado que combina materiais naturais com iluminação suave e mobiliário elegante.
+                </p>
+                <div class="project-tags">
+                    <span class="tag">Urbano</span>
+                    <span class="tag">Contemporâneo</span>
+                    <span class="tag">2025</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projeto 4 -->
+        <div class="project-card" onclick="onClickImage('https://arquitetura.vivadecora.com.br/wp-content/uploads/2022/02/imagem_2025-01-24_095125535-1024x680.png', 'Casa Contemporânea')">
+            <div class="project-image"
+                style="background-image: url('https://arquitetura.vivadecora.com.br/wp-content/uploads/2022/02/imagem_2025-01-24_095125535-1024x680.png'); background-size: cover; background-position: center;"></div>
+            <div class="project-content">
+                <h3 class="project-title">Casa Contemporânea</h3>
+                <p class="project-description">
+                    Projeto elegante com foco em iluminação natural, integração dos ambientes e design funcional.
+                </p>
+                <div class="project-tags">
+                    <span class="tag">Residencial</span>
+                    <span class="tag">Contemporâneo</span>
+                    <span class="tag">2025</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Modal para visualização da imagem -->
+<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
+    <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
+    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+        <img id="img01" class="w3-image">
+        <p id="caption"></p>
+    </div>
+</div>
+
+        <!-- Services -->
+        <div class="w3-container" id="services" style="margin-top:75px">
+            <h1 class="w3-xxxlarge w3-text-blue"><b>Serviços.</b></h1>
+            <hr style="width:50px;border:5px solid rgb(27, 59, 190)" class="w3-round">
+            <p>Somos um servico de design de interiores focado no que e melhor para a sua casa e para voce!</p>
+            <p>Algum texto sobre nossos serviços - o que fazemos e o que oferecemos.Somos lorem ipsum consectetur adipiscing
+                Elit, sed do eiusmod tempor incidente ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                nostrud exercitation ullamco laboris nisi ut aliquip ex ea comodo consequat. Duis aute irure
+                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                consectetur adipiscing elit, sed do eiusmod tempor
+                incidente ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip ex e comodo consequat.
+            </p>
+        <p>Aqui nos temos varios servicos de consultoria, desenvolvimento de projetos (residenciais, comerciais e institucionais), selecao de materiais e cores, criacao de moveis personalizados e supervisao de obras.</p>
+        </div>
+        <!-- Designers -->
+        <div class="w3-container" id="designers" style="margin-top:75px">
+            <h1 class="w3-xxxlarge w3-text-blue"><b>Designers.</b></h1>
+            <hr style="width:50px;border:5px solid rgb(42, 102, 199)" class="w3-round">
+            <p>A melhor equipe do mundo.</p>
+            <p>We are lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                commodo consequat. Duis aute irure
+                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat.
+            </p>
+            <p><b>Nossos designers são cuidadosamente escolhidos</b>:</p>
+        </div>
+
+          <!-- The Team -->
+        <div class="w3-row-padding w3-grayscale">
+            <div class="w3-col m4 w3-margin-bottom">
+                <div class="w3-light-grey">
+                    <img src="Imagem murilo halax" alt="John" style="width:100%">
+                    <div class="w3-container">
+                        <h3>Murilo Halax</h3>
+                        <p class="w3-opacity">CEO & Founder</p>
+                        <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque
+                            elementum.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-col m4 w3-margin-bottom">
+                <div class="w3-light-grey">
+                    <img src="/Imagens/team1.jpg" alt="Jane" style="width:100%">
+                    <div class="w3-container">
+                        <h3>Erick Rodrigues</h3>
+                        <p class="w3-opacity">Designer</p>
+                        <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque
+                            elementum.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-col m4 w3-margin-bottom">
+                <div class="w3-light-grey">
+                    <img src="/Imagens/team3.jpg" alt="Mike" style="width:100%">
+                    <div class="w3-container">
+                        <h3>Nathalya silva</h3>
+                        <p class="w3-opacity">Architect</p>
+                        <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque
+                            elementum.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-col m4 w3-margin-bottom">
+                <div class="w3-light-grey">
+                    <img src="/Imagens/team2.jpg" alt="John" style="width:100%">
+                    <div class="w3-container">
+                        <h3>Miguel dos Reis</h3>
+                        <p class="w3-opacity">CEO & Founder</p>
+                        <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque
+                            elementum.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-col m4 w3-margin-bottom">
+                <div class="w3-light-grey">
+                    <img src="/Imagens/team2.jpg" alt="John" style="width:100%">
+                    <div class="w3-container">
+                        <h3>Heloísa Azevedo</h3>
+                        <p class="w3-opacity">CEO & Founder</p>
+                        <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque
+                            elementum.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Packages / Pricing Tables -->
+        <div class="w3-container" id="packages" style="margin-top:75px">
+            <h1 class="w3-xxxlarge w3-text-blue"><b>Pacotes.</b></h1>
+            <hr style="width:50px;border:5px solid rgb(42, 102, 199)" class="w3-round">
+            <p>Alguns enviam mensagens com nossos preços. Lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore
+                e Dolore Magna Aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                aliquip ex e comodo consequat. Duis aute irure.</p>
+        </div>
+<div class="w3-row-padding" style="border-radius: 7px">
+    <div class="w3-half w3-margin-bottom">
+        <ul class="w3-ul w3-light-grey w3-center" style="border-radius: 7px; overflow: hidden;">
+            <li class="w3-light-blue w3-xlarge w3-padding-32" style="color: white;">Basico</li>
+            <li class="w3-padding-16">Planta Baixa</li>
+            <li class="w3-padding-16">10 horas de suporte</li>
+            <li class="w3-padding-16">Fotografia</li>
+            <li class="w3-padding-16">20% de desconto em móveis</li>
+            <li class="w3-padding-16">Bons Negocios</li>
+            <li class="w3-padding-16">
+                <h2>$ 199</h2>
+                <span class="w3-opacity">por quarto</span>
+            </li>
+            <li class="w3-light-grey w3-padding-24">
+                <button class="w3-button w3-white w3-padding-large w3-hover-black">Inscrever-se</button>
+            </li>
+        </ul>
+    </div>
+
+    <div class="w3-half w3-margin-bottom">
+        <ul class="w3-ul w3-light-grey w3-center" style="border-radius: 7px; border: 1px solid #2a66c7; overflow: hidden;">
+            <li class="w3-xlarge w3-padding-32" style="background-color: rgb(42, 102, 199);color: #fff;">Pro</li>
+            <li class="w3-padding-16">Planta Baixa</li>
+            <li class="w3-padding-16">50 horas de suporte</li>
+            <li class="w3-padding-16">Fotografia</li>
+            <li class="w3-padding-16">50% de desconto em móveis</li>
+            <li class="w3-padding-16">GREAT deals</li>
+            <li class="w3-padding-16">
+                <h2>$ 249</h2>
+                <span class="w3-opacity">por quarto</span>
+            </li>
+            <li class="w3-light-grey w3-padding-24">
+                <button class="w3-button w3-red w3-padding-large w3-hover-black">Inscrever-se</button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+        <!-- Contact -->
+        <div class="w3-container" id="contact" style="margin-top:75px">
+            <h1 class="w3-xxxlarge w3-text-blue"><b>Contato.</b></h1>
+            <hr style="width:50px;border:5px solid rgb(42, 102, 199)" class="w3-round">
+            <p>Quer que estilizemos a sua casa? Preencha o formulário e me preencha com os detalhes :) Adoramos conhecer novas pessoas!</p>
+            <form action="/action_page.php" target="_blank">
+                <div class="w3-section">
+                    <label>Nome</label>
+                    <input class="w3-input w3-border" type="text" name="Name" required>
+                </div>
+                <div class="w3-section">
+                    <label>Email</label>
+                    <input class="w3-input w3-border" type="text" name="Email" required>
+                </div>
+                <div class="w3-section">
+                    <label>Menssagem</label>
+                    <input class="w3-input w3-border" type="text" name="Message" required>
+                </div>
+                <button type="submit" class="w3-button w3-block w3-padding-large w3-margin-bottom"
+                    style="background-color: rgb(42, 102, 199); color: rgb(255, 255, 255) ;">Enviar Me</button>
+            </form>
+        </div>
+
+        <!-- End page content -->
+    </div>
+
+    <!-- W3.CSS Container -->
+    <div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px">
+        <p class="w3-right">Destruido por <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS"
+                target="_blank" class="w3-hover-opacity">w3.css</a></p>
+    </div>
+
+    <script>
+        // Script to open and close sidebar
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("myOverlay").style.display = "block";
+        }
+
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("myOverlay").style.display = "none";
+        }
+
+        // Modal Image Gallery
+        function onClick(element) {
+            document.getElementById("img01").src = element.src;
+            document.getElementById("modal01").style.display = "block";
+            var captionText = document.getElementById("caption");
+            captionText.innerHTML = element.alt;
+        }
+    </script>
+
+</body>
+
+</html>

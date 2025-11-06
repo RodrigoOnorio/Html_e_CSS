@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>AURADesign de interiores</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="icon"
+        href="https://png.pngtree.com/png-vector/20250613/ourmid/pngtree-cheerful-blue-fluffy-monster-with-pink-horns-and-big-smile-png-image_16493064.png"
+        type="image/png" sizes="16x16 32x32">
+    <style>
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-size: 20px;
+        }
+
+        p {
+            font-size: 15px;
+        }
+
+
+        body {
+            font-size: 16px;
+        }
+
+        .w3-half img {
+            margin-bottom: -6px;
+            margin-top: 16px;
+            opacity: 0.8;
+            cursor: pointer
+        }
+
+        .w3-half img:hover {
+            opacity: 1
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: #fff;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.367);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.31);
+        }
+
+        .project-image {
+            height: 200px;
+            background: #ccc;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .project-description {
+            color: #555;
+            margin: 0.5rem 0 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: #f1f1f1;
+            border-radius: 20px;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.85rem;
+            color: rgb(51, 136, 221);
+        }
+
+        .w3-row-padding .w3-col {
+            border-radius: 16px;
+        }
+    </style>
+
+    <script>
+        // Função para abrir o modal da imagem (já existente)
+        function onClick(element) {
+            document.getElementById("img01").src = element.src;
+            document.getElementById("modal01").style.display = "block";
+            var captionText = document.getElementById("caption");
+            captionText.innerHTML = element.alt;
+        }
+
+        // Função para abrir o modal de informações do projeto
+        function onClickImage(imageSrc, title) {
+            // Dados dos projetos
+            const projectData = {
+                'Casa de Verão': {
+                    description: 'Cores, texturas e formas se unem para criar um lar cheio de personalidade. Cada detalhe traduz o estilo único de quem vive ali.',
+                    area: '250m²',
+                    style: 'Moderno Tropical',
+                    year: '2025',
+                    location: 'Litoral Norte',
+                    features: ['Sustentável', 'Iluminação Natural', 'Materiais Locais']
+                },
+                'Loft Urbano': {
+                    description: 'Espaço industrial moderno com elementos contemporâneos e soluções inteligentes de armazenamento.',
+                    area: '180m²',
+                    style: 'Industrial Moderno',
+                    year: '2025',
+                    location: 'Centro da Cidade',
+                    features: ['Open Concept', 'Eficiência Energética', 'Tecnologia Smart Home']
+                },
+                'Apartamento Moderno': {
+                    description: 'Fazemos espaços sofisticados que combinam materiais naturais com iluminação suave e mobiliário elegante.',
+                    area: '120m²',
+                    style: 'Sofisticado Moderno',
+                    year: '2025',
+                    location: 'Zona Sul',
+                    features: ['Materiais Naturais', 'Iluminação Ambiental', 'Elegância']
+                },
+                'Casa Contemporânea': {
+                    description: 'Temos design minimalista com integração perfeita entre interior e exterior, criando um ambiente de tranquilidade.',
+                    area: '320m²',
+                    style: 'Minimalista Contemporâneo',
+                    year: '2025',
+                    location: 'Condomínio Fechado',
+                    features: ['Integração Natureza', 'Tranquilidade', 'Minimalismo']
+                }
+            };
+
+            const project = projectData[title] || {
+                description: 'Projeto de design de interiores exclusivo e sofisticado.',
+                area: '200m²',
+                style: 'Contemporâneo',
+                year: '2025',
+                location: 'São Paulo',
+                features: ['Elegante', 'Funcional', 'Moderno']
+            };
+
+            // Preenche o modal com os dados do projeto
+            document.getElementById('projectImage').src = imageSrc;
+            document.getElementById('projectTitle').innerHTML = '<b>' + title + '</b>';
+            document.getElementById('projectDescription').textContent = project.description;
+            document.getElementById('projectArea').textContent = project.area;
+            document.getElementById('projectStyle').textContent = project.style;
+            document.getElementById('projectYear').textContent = project.year;
+            document.getElementById('projectLocation').textContent = project.location;
+
+            // Preenche as características
+            const featuresContainer = document.getElementById('projectFeatures');
+            featuresContainer.innerHTML = '';
+            project.features.forEach(feature => {
+                const tag = document.createElement('span');
+                tag.className = 'w3-tag w3-light-grey w3-round w3-margin-right w3-margin-bottom';
+                tag.textContent = feature;
+                featuresContainer.appendChild(tag);
+            });
+
+            // Abre o modal
+            document.getElementById('projectModal').style.display = 'block';
+        }
+
+        // Função para fechar o modal de informações do projeto
+        function closeProjectModal() {
+            document.getElementById('projectModal').style.display = 'none';
+        }
+
+        // Funções do sidebar (já existentes)
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("myOverlay").style.display = "block";
+        }
+
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("myOverlay").style.display = "none";
+        }
+
+        // Fecha o modal ao clicar fora dele
+        window.onclick = function(event) {
+            var projectModal = document.getElementById('projectModal');
+            if (event.target == projectModal) {
+                projectModal.style.display = "none";
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-blue w3-collapse w3-top w3-large w3-padding"
+        style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+        <a href="javascript:void(0)" onclick="w3_close()"
+            class="w3-button w3-hide-large w3-display-topleft w3-hover-white" style="width:100%;font-size:22px">Fechar
+            Menu</a>
+        <div class="w3-container">
+            <h3 class="w3-padding-64"><b>Projeto de<br>interiores</b></h3>
+        </div>
+        <aside class="w3-bar-block">
+            <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Início</a>
+            <a href="#showcase" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Vitrine</a>
+            <a href="#services" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Serviços</a>
+            <a href="#designers" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Designers</a>
+            <a href="#packages" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Pacotes</a>
+            <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contato</a>
+        </aside>
+    </nav>
+
+    <!-- Top menu on small screens -->
+    <header class="w3-container w3-top w3-hide-large w3-blue w3-xlarge w3-padding">
+        <a href="javascript:void(0)" class="w3-button w3-blue w3-margin-right w3-hover-white" onclick="w3_open()">☰</a>
+        <span>Design de interiores</span>
+    </header>
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu"
+        id="myOverlay"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+        <!-- Header -->
+        <div class="w3-container" style="margin-top:80px" id="showcase">
+            <h1 class="w3-jumbo"><b>AURADesign de Interiores</b></h1>
+            <h1 class="w3-xxxlarge w3-text-blue"><b>Vitrine.</b></h1>
+            <hr style="width:50px;border:5px solid rgb(42, 102, 199)" class="w3-round">
+        </div>
+        <!-- Projetos -->
+        <div class="w3-container" id="projetos" style="margin-top:75px">
+            <p>Explore nossos projetos exclusivos que unem criatividade, funcionalidade e elegância.</p>
+
+            <div class="projects-grid">
+
+                <!-- Projeto 1 -->
+                <div class="project-card"
+                    onclick="onClickImage('https://blog.ulbra.br/wp-content/uploads/2022/07/Hist%C3%B3ria-do-design-de-interiores-desde-o-Antigo-Egito-at%C3%A9-os-dias-de-hoje.jpg', 'Casa de Verão')">
+                    <div class="project-image"
+                        style="background-image: url('https://blog.ulbra.br/wp-content/uploads/2022/07/Hist%C3%B3ria-do-design-de-interiores-desde-o-Antigo-Egito-at%C3%A9-os-dias-de-hoje.jpg'); background-size: cover; background-position: center;">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Amostras de cores e materiais</h3>
+                        <p class="project-description">
+                            Cores, texturas e formas se unem para criar um lar cheio de personalidade. Cada detalhe
+                            traduz o estilo único de quem vive ali.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Criativo</span>
+                            <span class="tag">Design</span>
+                            <span class="tag">2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto 2 -->
+                <div class="project-card"
+                    onclick="onClickImage('https://tuiuti.edu.br/wp-content/uploads/2023/01/design-de-interiores-2.jpg', 'Loft Urbano')">
+                    <div class="project-image"
+                        style="background-image: url('https://tuiuti.edu.br/wp-content/uploads/2023/01/design-de-interiores-2.jpg'); background-size: cover; background-position: center;">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Loft Urbano</h3>
+                        <p class="project-description">
+                            Espaço industrial moderno com elementos contemporâneos e soluções inteligentes de
+                            armazenamento.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Comercial</span>
+                            <span class="tag">Industrial</span>
+                            <span class="tag">2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto 3 -->
+                <div class="project-card"
+                    onclick="onClickImage('https://images.educamaisbrasil.com.br/content/noticias/design-de-interiores-projeta-moveis_g.jpg', 'Apartamento Moderno')">
+                    <div class="project-image"
+                        style="background-image: url('https://images.educamaisbrasil.com.br/content/noticias/design-de-interiores-projeta-moveis_g.jpg'); background-size: cover; background-position: center;">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Apartamento Moderno</h3>
+                        <p class="project-description">
+                            Fazemos espaços sofisticados que combina materiais naturais com iluminação suave e
+                            mobiliário
+                            elegante.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Urbano</span>
+                            <span class="tag">Contemporâneo</span>
+                            <span class="tag">2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto 4 -->
+                <div class="project-card"
+                    onclick="onClickImage('https://arquitetura.vivadecora.com.br/wp-content/uploads/2022/02/imagem_2025-01-24_095125535-1024x680.png', 'Casa Contemporânea')">
+                    <div class="project-image"
+                        style="background-image: url('https://arquitetura.vivadecora.com.br/wp-content/uploads/2022/02/imagem_2025-01-24_095125535-1024x680.png'); background-size: cover; background-position: center;">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Lar com Estilo</h3>
+                        <p class="project-description">
+                            Temos design minimalista com integração perfeita entre interior e exterior, criando um
+                            ambiente de tranquilidade.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Residencial</span>
+                            <span class="tag">Contemporâneo</span>
+                            <span class="tag">2025</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Modal para visualização da imagem -->
+        <div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
+            <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
+            <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+                <img id="img01" class="w3-image">
+                <p id="caption"></p>
+            </div>
+        </div>
+
+        <!-- Modal para informações detalhadas do projeto -->
+        <div id="projectModal" class="w3-modal w3-black" style="padding-top:0">
+            <div class="w3-modal-content w3-animate-zoom w3-white w3-round-large" style="max-width:800px;">
+                <div class="w3-container w3-padding-32">
+                    <span onclick="closeProjectModal()" class="w3-button w3-display-topright w3-large w3-text-grey">&times;</span>
+                    <div class="w3-row">
+                        <div class="w3-half">
+                            <img id="projectImage" class="w3-image w3-round" style="width:100%;">
+                        </div>
+                        <div class="w3-half w3-padding-large">
+                            <h2 id="projectTitle" class="w3-text-blue"><b></b></h2>
+                            <p id="projectDescription" class="w3-text-grey"></p>
+                            <div class="w3-section">
+                                <h4 class="w3-text-blue"><b>Detalhes do Projeto</b></h4>
+                                <p><strong>Área:</strong> <span id="projectArea"></span></p>
+                                <p><strong>Estilo:</strong> <span id="projectStyle"></span></p>
+                                <p><strong>Ano:</strong> <span id="projectYear"></span></p>
+                                <p><strong>Localização:</strong> <span id="projectLocation"></span></p>
+                            </div>
+                            <div class="w3-section">
+                                <h4 class="w3-text-blue"><b>Características</b></h4>
+                                <div id="projectFeatures" class="w3-tag w3-light-grey w3-round w3-margin-right w3-margin-bottom"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Services -->
+        <div class="w3-container" id="services" style="margin-top:75px">
+            <h1 class="w3-xxxlarge w3-text-blue"><b>Serviços.</b></h1>
+            <hr style="width:50px;border:5px solid rgb(27, 59, 190)" class="w3-round">
+            <p>Somos um servico de design de interiores focado no que e melhor para a sua casa e para voce!</p>
+            <p>Somos uma empresa especializada em ensinar serviçõs de design de interiores,
+                Principalmente em areas de design sustentavel,
+                Criação de ambientes completos para lojas e em acompanhamento de clientes em showrooms e fornecedores
+                para a compra de móveis, acessórios, obras de arte e materiais de reforma.</p>
+            <p>Aqui nos temos varios servicos de consultoria, desenvolvimento de projetos (residenciais, comerciais e
+                institucionais), selecao de materiais e cores, criacao de moveis personalizados e supervisao de obras.
+            </p>
+        </div>
+        <!-- Designers -->
+        <div class="w3-container" id="designers" style="margin-top:75px">
+            <h1 class="w3-xxxlarge w3-text-blue"><b>Designers.</b></h1>
+            <hr style="width:50px;border:5px solid rgb(42, 102, 199)" class="w3-round">
+            <p>A melhor equipe do mundo.</p>
+            <p>Nós trabalhamos juntos pra ensinar bem os nossos alunos a mexer bem em designers e serem bons na função.
+            </p>
+            <p><b>Nossos designers são cuidadosamente escolhidos</b>:</p>
+        </div>
+        <!-- SEÇÃO: EQUIPE -->
+        <div class="w3-container" style="margin-top:60px;">
+            <h2 class="w3-center w3-text-blue" style="font-weight:600;">Nossa Equipe</h2>
+            <p class="w3-center w3-large w3-text-grey">Profissionais que transformam ideias em design e projetos bons</p>
+
+              <div class="w3-row-padding" style="margin-top:40px; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+
+  <!-- Murilo Halax -->
+  <div class="w3-col m4 w3-margin-bottom" style="max-width: 320px;">
+    <div class="w3-light-grey" style="border-radius: 16px; overflow: hidden;">
+      <img src="https://media.istockphoto.com/id/1283220320/pt/foto/cute-chick-with-green-cap-funny-conceptual-photo.jpg?s=612x612&w=0&k=20&c=dvUjpDtSoyXkp7UcvybiNF62VG5_YF8kwKY5DL84jmg=" 
+           alt="Murilo Halax" 
+           style="width:100%; height:300px; object-fit:cover; display:block; margin:auto;">
+      <div class="w3-container">
+        <h3>Murilo Halax</h3>
+        <p class="w3-opacity">CEO & Fundador</p>
+        <p>Especialista em design sustentável e ambientes modernos. Apaixonado por transformar espaços em experiências únicas.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Erick Rodrigues -->
+  <div class="w3-col m4 w3-margin-bottom" style="max-width: 320px;">
+    <div class="w3-light-grey" style="border-radius: 16px; overflow: hidden;">
+    <img src="data:image/jpeg;base64,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"
+           alt="Erick Rodrigues" 
+           style="width:100%; height:300px; object-fit:cover; display:block; margin:auto;">
+      <div class="w3-container">
+        <h3>Erick Rodrigues</h3>
+        <p class="w3-opacity">Designer de Interiores</p>
+        <p>Focado em estética contemporânea e soluções criativas que equilibram conforto e funcionalidade.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nathalya Silva -->
+  <div class="w3-col m4 w3-margin-bottom" style="max-width: 320px;">
+    <div class="w3-light-grey" style="border-radius: 16px; overflow: hidden;">
+<img src="data:image/jpeg;base64,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"
+           alt="Nathalya Silva" 
+           style="width:100%; height:300px; object-fit:cover; display:block; margin:auto;">
+      <div class="w3-container">
+        <h3>Nathalya Silva</h3>
+        <p class="w3-opacity">Arquiteta</p>
+        <p>Transforma ideias em projetos únicos, com um olhar voltado à harmonia entre forma, luz e textura.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Miguel dos Reis -->
+  <div class="w3-col m4 w3-margin-bottom" style="max-width: 320px;">
+    <div class="w3-light-grey" style="border-radius: 16px; overflow: hidden;">
+      <img src="https://i.pinimg.com/236x/d9/52/56/d95256ad05483df917fe3f083b847d85.jpg"
+           alt="Miguel dos Reis" 
+           style="width:100%; height:300px; object-fit:cover; display:block; margin:auto;">
+      <div class="w3-container">
+        <h3>Miguel dos Reis</h3>
+        <p class="w3-opacity">Consultor de Estilo</p>
+        <p>Cria ambientes acolhedores e sofisticados, sempre atento aos detalhes que fazem a diferença.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Heloísa Azevedo -->
+  <div class="w3-col m4 w3-margin-bottom" style="max-width: 320px;">
+    <div class="w3-light-grey" style="border-radius: 16px; overflow: hidden;">
+      <img src="https://i.pinimg.com/736x/42/65/7b/42657bf5397db960a6cf67f9048c4d48.jpg"
+           alt="Heloísa Azevedo" 
+           style="width:100%; height:300px; object-fit:cover; display:block; margin:auto;">
+      <div class="w3-container">
+        <h3>Heloísa Azevedo</h3>
+        <p class="w3-opacity">Designer de Ambientes</p>
+        <p>Combina arte e conforto para criar espaços que refletem identidade e bem-estar.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rodrigo Onório -->
+  <div class="w3-col m4 w3-margin-bottom" style="max-width: 320px;">
+    <div class="w3-light-grey" style="border-radius: 16px; overflow: hidden;">
+      <img src="https://scontent-gru2-2.xx.fbcdn.net/v/t1.15752-9/577194311_1602161487812993_1659194498203140836_n.png?stp=dst-png_s720x720&_nc_cat=102&ccb=1-7&_nc_sid=0024fc&_nc_ohc=Ejoh-HzLM5gQ7kNvwG4Ghlt&_nc_oc=AdlttfbZFqJNGorXkahxJkKB4FZwDcbXwU-BHrG786NuZcKCQKZXwPlJUf9o9UUsJwc&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-gru2-2.xx&oh=03_Q7cD3wH5OsjbvAHhcg0I9Newwf3JFe74cLvI6C8RP6yhngPlSA&oe=693407CB"
+           alt="Rodrigo Onório" 
+           style="width:100%; height:300px; object-fit:cover; display:block; margin:auto;">
+      <div class="w3-container">
+        <h3>Rodrigo Onório</h3>
+        <p class="w3-opacity">Gerente Executivo</p>
+        <p>Estrategista por natureza, transforma visões em realidade com foco em excelência e resultados excepcionais.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+        <!-- Packages / Pricing Tables -->
+        <p class="w3-container" id="packages" style="margin-top:75px">
+            <h1 class="w3-xxxlarge w3-text-blue"><b>Pacotes.</b></h1>
+            <hr style="width:50px;border:5px solid rgb(42, 102, 199)" class="w3-round">
+            <p>
+💡 Pacote Básico
+Perfeito pra quem quer renovar o ambiente sem complicação. Inclui consultoria personalizada, definição de paleta de cores, escolha de móveis e decoração funcional pra transformar seu espaço de forma simples e acessível.
+</p><br>
+✨ Pacote Pro
+Ideal pra quem busca um projeto completo e exclusivo. Engloba tudo do pacote básico, com o acréscimo de plantas 3D, acompanhamento de obra e suporte total em cada etapa pra garantir um resultado sofisticado e com a sua cara.
+</p>
+Quer que eu deixe o texto com um tom mais **profissional**, **criativo**, ou **comercial (voltado pra vender mais)**? Posso ajustar o estilo rapidinho.
+
+        </div>
+        <div class="w3-row-padding" style="border-radius: 7px">
+            <div class="w3-half w3-margin-bottom">
+                <ul class="w3-ul w3-light-grey w3-center" style="border-radius: 7px; overflow: hidden;">
+                    <li class="w3-light-blue w3-xlarge w3-padding-32" style="color: white;">Básico</li>
+                    <li class="w3-padding-16">Planta Baixa</li>
+                    <li class="w3-padding-16">10 horas de suporte</li>
+                    <li class="w3-padding-16">Fotografia</li>
+                    <li class="w3-padding-16">20% de desconto em móveis</li>
+                    <li class="w3-padding-16">Bons Negocios</li>
+                    <li class="w3-padding-16">
+                        <h2>$ 199</h2>
+                        <span class="w3-opacity">por quarto</span>
+                    </li>
+                    <li class="w3-light-grey w3-padding-24">
+                        <button class="w3-button w3-white w3-padding-large w3-hover-black">Inscrever-se</button>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="w3-half w3-margin-bottom">
+                <ul class="w3-ul w3-light-grey w3-center"
+                    style="border-radius: 7px; border: 2px solid #2a66c7; overflow: hidden;">
+                    <li class="w3-xlarge w3-padding-32" style="background-color: rgb(42, 102, 199);color: #fff;">Pro
+                    </li>
+                    <li class="w3-padding-16">Planta Baixa</li>
+                    <li class="w3-padding-16">50 horas de suporte</li>
+                    <li class="w3-padding-16">Fotografia</li>
+                    <li class="w3-padding-16">50% de desconto em móveis</li>
+                    <li class="w3-padding-16">GRANDES negócios</li>
+                    <li class="w3-padding-16">
+                        <h2>$ 249</h2>
+                        <span class="w3-opacity">por quarto</span>
+                    </li>
+                    <li class="w3-light-grey w3-padding-24">
+                        <button class="w3-button w3-red w3-padding-large w3-hover-black">Inscrever-se</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <!-- Contact -->
+        <div class="w3-container" id="contact" style="margin-top:75px">
+            <h1 class="w3-xxxlarge w3-text-blue"><b>Contato.</b></h1>
+            <hr style="width:50px;border:5px solid rgb(42, 102, 199)" class="w3-round">
+            <p>Quer que estilizemos a sua casa? Preencha o formulário com suas informações :) Adoramos conhecer
+                novas pessoas!</p>
+            <form action="/action_page.php" target="_blank">
+                <div class="w3-section">
+                    <label>Nome</label>
+                    <input class="w3-input w3-border" type="text" name="Name" required>
+                </div>
+                <div class="w3-section">
+                    <label>Email</label>
+                    <input class="w3-input w3-border" type="text" name="Email" required>
+                </div>
+                <div class="w3-section">
+                    <label>Menssagem</label>
+                    <input class="w3-input w3-border" type="text" name="Message" required>
+                </div>
+                <button type="submit" class="w3-button w3-block w3-padding-large w3-margin-bottom"
+                    style="background-color: rgb(42, 102, 199); color: rgb(255, 255, 255) ;">Enviar-Me</button>
+            </form>
+        </div>
+
+        <!-- End page content -->
+    </div>
+
+        <!-- Footer -->
+<!-- Footer -->
+<footer class="w3-padding-64" style="background-color: rgb(42, 102, 199); color: white;">
+    <div class="w3-container" style="max-width:1100px; margin:auto;">
+        <div style="
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-start; 
+            flex-wrap: wrap;
+            gap: 40px;
+        ">
+
+            <!-- Texto principal -->
+            <div style="flex: 1; min-width: 300px;">
+                <h3 style="margin-bottom: 10px; color: #fff;">Design de Interiores</h3>
+                <p style="max-width:400px; color: #f1f1f1; line-height: 1.7; text-align: center;">
+                    Transformamos ideias em espaços inspiradores.  
+                    Cada ambiente é projetado com cuidado para refletir conforto, funcionalidade e estilo.  
+                    Nosso compromisso é criar lugares que contem a sua história.
+                </p>
+            </div>
+
+            <!-- Links úteis -->
+            <div style="flex: 1; min-width: 200px;">
+                <h4 style="margin-bottom: 15px;">Navegação</h4>
+                <ul style="list-style:none; padding:0; line-height:1.8;">
+                    <li><a href="#showcase" style="color:white; text-decoration:none;" class="w3-hover-text-black">Início</a></li>
+                    <li><a href="#services" style="color:white; text-decoration:none;" class="w3-hover-text-black">Serviços</a></li>
+
+    </div>
+
+
+
+
+
+
+
+    <script>
+        // Script to open and close sidebar
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("myOverlay").style.display = "block";
+        }
+
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("myOverlay").style.display = "none";
+        }
+
+        // Modal Image Gallery
+        function onClick(element) {
+            document.getElementById("img01").src = element.src;
+            document.getElementById("modal01").style.display = "block";
+            var captionText = document.getElementById("caption");
+            captionText.innerHTML = element.alt;
+        }
+    </script>
+
+</body>
+
+</html>

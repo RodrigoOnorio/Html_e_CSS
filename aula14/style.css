@@ -1,0 +1,225 @@
+body {
+    height: 720px;
+    margin: 0px;
+    background-color: black;
+}
+
+.container1 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.container2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container3 {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+
+.container4 {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+}
+
+.container5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container6 {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    flex-direction: column;
+}
+
+.container7 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container8 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container9 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.container10 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.container11 {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+
+.container12 {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+
+.caixote1 {
+    background: rgb(255, 0, 0);
+    color: white;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+}
+
+.caixote2 {
+    background: rgb(0, 21, 255);
+    color: white;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+}
+
+.caixote3 {
+    background: rgb(0, 255, 42);
+    color: white;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+}
+
+.caixote4 {
+    background: rgb(30, 0, 255);
+    color: white;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+}
+
+.caixote5 {
+    background: rgb(30, 0, 255);
+    color: white;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+}
+
+.caixote6 {
+    background: rgb(30, 0, 255);
+    color: white;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+}
+
+.caixote7 {
+    background: rgb(0, 21, 255);
+    color: white;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+}
+
+
+.caixote8 {
+    background: rgb(0, 21, 255);
+    color: white;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+}
+
+.caixote9 {
+    background: rgb(229, 255, 0);
+    color: white;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+}
+
+.caixote10 {
+    background: rgb(229, 255, 0);
+    color: white;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+}
+
+.caixote11 {
+    background: rgb(255, 0, 0);
+    color: white;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+}
+
+.caixote12 {
+    background: rgb(255, 0, 0);
+    color: white;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+}
