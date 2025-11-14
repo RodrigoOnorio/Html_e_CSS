@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ex10 - Rodapé com 3 seções</title>
+  <style>
+    html, body { height: 100%; margin: 0; }
+    .pagina { min-height: 100%; display: flex; flex-direction: column; }
+    .conteudo { flex: 1; }
+    footer { display: flex; justify-content: space-between; gap: 16px; padding: 16px; background: #111827; color: #e5e7eb; }
+    .secao-rodape { flex: 1; }
+    .secao-titulo { margin: 0 0 8px; font-size: 16px; }
+    .secao-texto { margin: 0; font-size: 14px; color: #d1d5db; }
+  </style>
+</head>
+<body>
+  <div class="pagina">
+    <main class="conteudo"></main>
+    <footer>
+      <div class="secao-rodape"><h3 class="secao-titulo">Sobre</h3><p class="secao-texto">Empresa brasileira de tecnologia.</p></div>
+      <div class="secao-rodape"><h3 class="secao-titulo">Links</h3><p class="secao-texto">Produtos • Suporte • Blog</p></div>
+      <div class="secao-rodape"><h3 class="secao-titulo">Contato</h3><p class="secao-texto">contato@empresa.com.br</p></div>
+    </footer>
+  </div>
+</body>
+</html>

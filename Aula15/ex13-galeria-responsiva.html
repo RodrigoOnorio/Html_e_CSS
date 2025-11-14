@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ex13 - Galeria Responsiva Flex</title>
+  <style>
+    body { margin: 0; padding: 24px; background: #fafafa; }
+    .galeria-flex { display: flex; flex-wrap: wrap; gap: 16px; }
+    .cartao { flex: 1 1 220px; max-width: 320px; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; }
+    .cartao-thumb { height: 160px; background: #c4b5fd; }
+    .cartao-conteudo { padding: 12px; }
+    .cartao-titulo { margin: 0 0 6px; font-size: 16px; }
+    .cartao-descricao { margin: 0; color: #6b7280; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="galeria-flex">
+    <div class="cartao"><div class="cartao-thumb"></div><div class="cartao-conteudo"><h3 class="cartao-titulo">Cafeteria Dona Flor</h3><p class="cartao-descricao">Aberto das 8h às 20h • Café especial</p></div></div>
+    <div class="cartao"><div class="cartao-thumb"></div><div class="cartao-conteudo"><h3 class="cartao-titulo">Pizzaria do Bairro</h3><p class="cartao-descricao">Delivery • Massa artesanal • Promoções</p></div></div>
+    <div class="cartao"><div class="cartao-thumb"></div><div class="cartao-conteudo"><h3 class="cartao-titulo">Academia Vida Ativa</h3><p class="cartao-descricao">Musculação • Funcional • Planos mensais</p></div></div>
+    <div class="cartao"><div class="cartao-thumb"></div><div class="cartao-conteudo"><h3 class="cartao-titulo">Mercadinho Central</h3><p class="cartao-descricao">Hortifruti • Padaria • Açougue</p></div></div>
+    <div class="cartao"><div class="cartao-thumb"></div><div class="cartao-conteudo"><h3 class="cartao-titulo">Pet Shop AuAu</h3><p class="cartao-descricao">Banho e tosa • Consultas • Acessórios</p></div></div>
+  </div>
+</body>
+</html>3

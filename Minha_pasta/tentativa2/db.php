@@ -1,17 +1,15 @@
 <?php
-session_start();
+$host = 'localhost';
+$dbname = 'flametalk';
+$username = 'root';
+$password = '';
 
-$servidor = "localhost";
-$usuario = "root";
-$password = "";
-$bd = "whatsapp";
-
-$conexao = new mysqli($servidor, $usuario, $password, $bd);
-if($conexao->connect_error){
-    die("Erro de conexão: " . $conexao->connect_error);
-}
-
-function formatarData($data){
-    return date('H:i', strtotime($data));
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    http_response_code(500);
+    echo json_encode(['success' => false, 'message' => 'Erro de conexão: ' . $e->getMessage()]);
+    exit();
 }
 ?>

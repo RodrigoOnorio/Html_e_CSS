@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ex12 - Imagens no centro com wrap</title>
+  <style>
+    body { margin: 0; padding: 24px; }
+    .galeria-imagens { display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; }
+    img { width: 200px; height: 140px; object-fit: cover; border-radius: 8px; background: #ddd; }
+  </style>
+</head>
+<body>
+  <div class="galeria-imagens">
+    <img src="https://picsum.photos/seed/a/400/280" alt="Paisagem Montanhosa">
+    <img src="https://picsum.photos/seed/b/400/280" alt="Praia ao entardecer">
+    <img src="https://picsum.photos/seed/c/400/280" alt="Centro urbano à noite">
+    <img src="https://picsum.photos/seed/d/400/280" alt="Parque com árvores">
+  </div>
+</body>
+</html>

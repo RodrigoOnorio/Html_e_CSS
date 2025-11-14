@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ex09 - Três colunas de cards com wrap</title>
+  <style>
+    body { margin: 0; padding: 24px; font-family: system-ui, sans-serif; }
+    .grade-cards { display: flex; flex-wrap: wrap; gap: 16px; }
+    .card { flex: 1 1 calc(33.333% - 16px); min-width: 240px; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.08); }
+    .card__imagem { height: 120px; background: #93c5fd; border-top-left-radius: 8px; border-top-right-radius: 8px; }
+    .card__conteudo { padding: 12px; }
+    .card__titulo { font-size: 16px; margin: 0 0 8px; }
+    .card__descricao { margin: 0; color: #4b5563; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="grade-cards">
+    <div class="card"><div class="card__imagem"></div><div class="card__conteudo"><h3 class="card__titulo">Apartamento 2Q</h3><p class="card__descricao">Centro • 65 m² • Reformado</p></div></div>
+    <div class="card"><div class="card__imagem"></div><div class="card__conteudo"><h3 class="card__titulo">Casa Térrea</h3><p class="card__descricao">Bairro Verde • 120 m² • 3 dorm.</p></div></div>
+    <div class="card"><div class="card__imagem"></div><div class="card__conteudo"><h3 class="card__titulo">Sala Comercial</h3><p class="card__descricao">Centro Empresarial • 40 m²</p></div></div>
+    <div class="card"><div class="card__imagem"></div><div class="card__conteudo"><h3 class="card__titulo">Studio Moderno</h3><p class="card__descricao">Zona Norte • 35 m² • Mobiliado</p></div></div>
+    <div class="card"><div class="card__imagem"></div><div class="card__conteudo"><h3 class="card__titulo">Cobertura</h3><p class="card__descricao">Vista panorâmica • 180 m²</p></div></div>
+  </div>
+</body>
+</html>
