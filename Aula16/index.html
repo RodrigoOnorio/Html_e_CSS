@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PataAmiga - ONG de Adoção de Animais</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #7828c9;
+            --secondary: #3489e3;
+            --accent: #2D5016;
+            --neutral-light: #FFF9F5;
+            --neutral-dark: #2C2C2C;
+            --text-primary: #2C2C2C;
+            --text-secondary: #666;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--neutral-light);
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .logo-section {
+            flex: 1;
+            min-width: 10px;
+        }
+
+        .logo-section h1 {
+            font-size: 2rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .logo-section p {
+            font-size: 0.95rem;
+            opacity: 0.95;
+            font-style: italic;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 0.25rem;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+            border-bottom-color: white;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Seções */
+        section {
+            padding: 4rem 2rem;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            text-align: center;
+        }
+
+        /* Quem Somos */
+        #quem-somos {
+            background-color: white;
+        }
+
+        .quem-somos-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .quem-somos-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            text-align: justify;
+        }
+
+        .valores {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .valor {
+            background: seashell;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(232, 118, 91, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .valor:hover {
+            transform: translateY(-5px);
+        }
+
+        .valor h3 {
+            color: rgb(0, 0, 0);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .valor p {
+            color: rgb(0, 0, 0);
+            font-size: 0.95rem;
+        }
+
+        /* Projetos */
+        #projetos {
+            background-color: var(--neutral-light);
+        }
+
+        .tabela-container {
+            max-width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        thead {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        th,
+        td {
+            padding: 1.2rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        tbody tr:hover {
+            background-color: rgba(232, 118, 91, 0.05);
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .status-ativo {
+            background-color: #D4EDDA;
+            color: var(--accent);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .status-concluido {
+            background-color: #E2E3E5;
+            color: #383D41;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+                /* Animais para Adoção */
+        #animais {
+            background-color: var(--neutral-light);
+        }
+
+        .animais-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .animal-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .animal-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .animal-foto {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .animal-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .animal-info h3 {
+            color: wheat;
+            margin-bottom: 3.5rem;
+            font-size: 1.5rem;
+            padding: 10px;
+        }
+
+        .animal-info p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .animal-info small {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-top: 0.5rem;
+            flex-grow: 1;
+        }
+
+        .btn-adotar {
+            margin-top: 1rem;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .btn-adotar:hover {
+            background-color: #d66647;
+            transform: translateY(-2px);
+        }
+
+        .btn-adotar:active {
+            transform: translateY(0);
+        }
+
+        /* Equipe */
+        #equipe {
+            background-color: white;
+        }
+
+        .equipe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .membro {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .membro:hover {
+            transform: translateY(-8px);
+        }
+
+        .membro-foto {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 32rem;
+        }
+
+        .membroInfo {
+            padding: 2rem 1.5rem;
+            background-color: #f5f5f5;
+            /* Added white bottom border to all team members */
+            border-bottom: 5px solid white;
+        }
+
+
+        .membro-info h3 {
+            color: rgb(255, 255, 255);
+            margin-bottom: 4.5rem;
+            font-size: 1.3rem;
+        }
+
+        .membro-info p {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.1rem;
+        }
+
+        .membro-info small {
+            color: var(--text-secondary);
+        }
+
+
+        /* Doe Agora */
+        #doe-agora {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        #doe-agora h2 {
+            color: white;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(232, 118, 91, 0.1);
+        }
+
+        button {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #d66647;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--text-primary);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .footer-section p {
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        .footer-copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 2rem;
+            opacity: 0.8;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav {
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            section {
+                padding: 2rem 1rem;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            .logo-section h1 {
+                font-size: 1.5rem;
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+
+            th,
+            td {
+                padding: 0.8rem;
+            }
+
+            .form-container {
+                padding: 1.5rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-section {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <h1>🐾 PataAmiga</h1>
+                <p>"Transformando vidas, uma pata por vez"</p>
+            </div>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#quem-somos">Quem Somos</a>
+                <a href="#projetos">Projetos</a>
+                <a href="#equipe">Equipe</a>
+                <a href="#doe-agora">Doe Agora</a>
+                <a href="#contato">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Quem Somos -->
+    <section id="quem-somos">
+        <div class="container">
+            <h2>Quem Somos</h2>
+            <div class="quem-somos-content">
+                <p>
+                    A PataAmiga é uma organização não-governamental dedicada ao resgate, proteção e colocação em adoção
+                    de animais domésticos abandonados e em situação de risco. Desde 2015, trabalhamos incansavelmente
+                    para dar uma segunda chance a milhares de cães e gatos, oferecendo cuidados veterinários, nutrição
+                    adequada e muito amor a cada animal que chega até nós.
+                </p>
+                <div class="valores">
+                    <div class="valor">
+                        <h3> Compaixão</h3>
+                        <p>Acreditamos que todo animal merece ser amado e cuidado com dedicação e respeito.</p>
+                    </div>
+                    <div class="valor">
+                        <h3> Solidariedade</h3>
+                        <p>Trabalhamos em conjunto com a comunidade para criar uma rede de apoio aos animais em
+                            necessidade.</p>
+                    </div>
+                    <div class="valor">
+                        <h3> Sustentabilidade</h3>
+                        <p>Buscamos práticas responsáveis que garantem cuidados de qualidade a longo prazo para nossos
+                            protegidos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projetos -->
+    <section id="projetos">
+        <div class="container">
+            <h2>Nossos Projetos</h2>
+            <div class="tabela-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome do Projeto</th>
+                            <th>Público Atendido</th>
+                            <th>Ano de Início</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Resgate e Acolhimento</td>
+                            <td>Cães e gatos abandonados</td>
+                            <td>2015</td>
+                            <td><span class="status-ativo">Ativo</span></td>
+                        </tr>
+                        <tr>
+                            <td>Programa de Adoção Responsável</td>
+                            <td>Famílias interessadas em adotar</td>
+                            <td>2017</td>
+                            <td><span class="status-ativo">Ativo</span></td>
+                        </tr>
+                        <tr>
+                            <td>Campanha de Castração Comunitária</td>
+                            <td>Animais da comunidade local</td>
+                            <td>2019</td>
+                            <td><span class="status-ativo">Ativo</span></td>
+                        </tr>
+                        <tr>
+                            <td>Centro de Reabilitação Temporária</td>
+                            <td>Animais em recuperação</td>
+                            <td>2018</td>
+                            <td><span class="status-concluido">Concluído</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+        <!-- Animais para Adoção -->
+    <section id="animais">
+        <div class="container">
+            <h2>Animais para Adoção</h2>
+            <div class="animais-grid">
+                <div class="animal-card">
+                    <div class="animal-foto"><figure><img src="https://scontent.fgru6-1.fna.fbcdn.net/v/t1.15752-9/588967387_1540337203902802_9147267990393653139_n.png?stp=dst-png_p480x480&_nc_cat=106&ccb=1-7&_nc_sid=0024fc&_nc_ohc=2jw12q6Hs5kQ7kNvwEhbnFA&_nc_oc=AdnsCm4yzABABtt-g1dQnwaGrTxCopwYzg_ZM8HaBjVe_kuw4H_wjGpfx9C7-10ZRfU&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fgru6-1.fna&oh=03_Q7cD3wHW6zPuT-wp3kdgqxtAxhizuz6RmSsXaENbr-EiHICaLQ&oe=694FFB4C" alt=""></figure></div>
+                    <div class="animal-info">
+                        <h3>Max</h3>
+                        <p><strong>Tipo:</strong> Cão</p>
+                        <p><strong>Idade:</strong> 2 anos</p>
+                        <p><strong>Tamanho:</strong> Médio</p>
+                        <small>Cão dócil e amigável, ótimo com crianças. Precisa de um lar amoroso.</small>
+                    </div>
+                    <button class="btn-adotar">Adotar</button>
+                </div>
+
+                <div class="animal-card">
+                    <div class="animal-foto"><figure><img src="https://scontent-gru2-2.xx.fbcdn.net/v/t1.15752-9/589882613_1204746421619068_4271950698996407182_n.png?stp=dst-png_p480x480&_nc_cat=105&ccb=1-7&_nc_sid=0024fc&_nc_ohc=1vRSAkOx0-QQ7kNvwEj2bWu&_nc_oc=AdlQBMF5m7ej98pKcUrsWsVt5TRWzZwkUuUTIQ-fKWUctW7LqXaaawtdui0I70b_tEY&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-gru2-2.xx&oh=03_Q7cD3wGSldIN2ItbnpIAXlMoZW2YuJG-6y95scb-2xYMqC9ChA&oe=694FD6ED" alt=""></figure></div>
+                    <div class="animal-info">
+                        <h3>Luna</h3>
+                        <p><strong>Tipo:</strong> Gato</p>
+                        <p><strong>Idade:</strong> 1 ano</p>
+                        <p><strong>Tamanho:</strong> Pequeno</p>
+                        <small>Gato carinhoso e brincalhão. Ideal para apartamentos.</small>
+                    </div>
+                    <button class="btn-adotar">Adotar</button>
+                </div>
+
+                <div class="animal-card">
+                    <div class="animal-foto"><figure><img src="https://scontent.fgru6-1.fna.fbcdn.net/v/t1.15752-9/589203412_839309208835320_2147656797965839511_n.png?stp=dst-png_p480x480&_nc_cat=108&ccb=1-7&_nc_sid=0024fc&_nc_ohc=tz8J46Gc_OYQ7kNvwGmbT1E&_nc_oc=AdnLqRX3jEVtKda8b262zJMOGB0HW3RQp7FCNQrkF4y4Xzd9dJnclVJHQp2mKk-tP3A&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fgru6-1.fna&oh=03_Q7cD3wE1rJBKcdJs3wXJ3r4oVmttpWgInCabzHdFXaoqxoisKg&oe=694FFB39" alt=""></figure></div>
+                    <div class="animal-info">
+                        <h3>Rex</h3>
+                        <p><strong>Tipo:</strong> Cão</p>
+                        <p><strong>Idade:</strong> 3 anos</p>
+                        <p><strong>Tamanho:</strong> Grande</p>
+                        <small>Cão energético e leal. Precisa de espaço para correr.</small>
+                    </div>
+                    <button class="btn-adotar">Adotar</button>
+                </div>
+
+                <div class="animal-card">
+                    <div class="animal-foto"><figure><img src="https://scontent.fgru6-1.fna.fbcdn.net/v/t1.15752-9/588927101_1278724414284827_1491960344339031479_n.png?stp=dst-png_p480x480&_nc_cat=101&ccb=1-7&_nc_sid=0024fc&_nc_ohc=ds0JvHHy85IQ7kNvwGb3HxY&_nc_oc=AdmmpQGPOIhz4hPwxdYw0VZ6l0j2SMwZ-3Mrj38MCTysXHLBmB9CtDluxrLs1HAHZUc&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fgru6-1.fna&oh=03_Q7cD3wFpZbygvjHm9B-V2B9AYcNG1MFxxm56R6lOzAq6U3IEww&oe=694FFB77" alt=""></figure></div>
+                    <div class="animal-info">
+                        <h3>Luna</h3>
+                        <p><strong>Tipo:</strong> Gato</p>
+                        <p><strong>Idade:</strong> 2 anos</p>
+                        <p><strong>Tamanho:</strong> Pequeno</p>
+                        <small>Gata independente e elegante. Excelente companhia.</small>
+                    </div>
+                    <button class="btn-adotar">Adotar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipe -->
+    <section id="equipe">
+        <div class="container">
+            <h2>Nossa Equipe</h2>
+            <div class="equipe-grid">
+                <div class="membro">
+                    <div class="membro-foto">
+                        <figure> <img
+                                src="https://scontent.fgru6-1.fna.fbcdn.net/v/t1.15752-9/564948972_1352882879845805_4165526199543932812_n.png?stp=dst-png_s480x480&_nc_cat=103&ccb=1-7&_nc_sid=0024fc&_nc_ohc=H-vaqnNkikcQ7kNvwH3mdOj&_nc_oc=Adk1kM2UVXhsjZN18UaWHmTtK-xE71EY8OvCKkmzccvzDTY67GyvHqjLI6YGSgTSnDo&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fgru6-1.fna&oh=03_Q7cD3wGz13rnODoflWj_xjbTRIy4PzwoEC2DN8B9Qyy6ltJjtw&oe=694FB255"
+                                alt=""></figure>
+                    </div>
+                    <div class="membro-info">
+                        <h3>Dra. Silva Montes</h3>
+                        <p>Veterinária Chefe</p>
+                        <small>20 anos de experiência em cuidados animais</small>
+                    </div>
+                </div>
+                <div class="membro">
+                    <div class="membro-foto">
+                        <figure><img
+                                src="https://scontent-gru2-1.xx.fbcdn.net/v/t1.15752-9/588243033_1596000518494175_2598702742730402588_n.png?_nc_cat=111&ccb=1-7&_nc_sid=0024fc&_nc_ohc=-pwqi3SIaQcQ7kNvwGVYFCH&_nc_oc=AdnFNfuzXjmV_YD-mQjQkcB3oDlQvqCJMR0JFqWEwMadMgWaNnwbb810lKvh0GHnDHg&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-gru2-1.xx&oh=03_Q7cD3wHV1eptHH4LWFVInoSc_tZ0eX9_5DL6Sfi6mYdH6jNpFw&oe=694FB442"
+                                alt=""></figure>
+                    </div>
+                    <div class="membro-info">
+                        <h3>Cirilo Sucrilhos</h3>
+                        <p>Coordenador de Adoções</p>
+                        <small>Responsável pelos processos de adoção responsável</small>
+                    </div>
+                </div>
+                <div class="membro">
+                    <div class="membro-foto"><figure><img src="https://scontent-gru2-2.xx.fbcdn.net/v/t1.15752-9/569918164_1510397136852930_1358099675608705621_n.png?stp=dst-png_s526x395&_nc_cat=106&ccb=1-7&_nc_sid=0024fc&_nc_ohc=z3vHu1VezZsQ7kNvwGYq9hy&_nc_oc=AdlmoFc-lrSNC0sXxtsF4PYWfISeMjpyaXtJ4IpvfEb0cIPzijzLnrqgHVSSfkSmSpM&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-gru2-2.xx&oh=03_Q7cD3wGUszeMeOhvEYXTpdZZFHNrvqZPm4z70I8kMXJfmPkpng&oe=694FC3E1" alt=""></figure></div>
+                    <div class="membro-info">
+                        <h3>Rodrigo Ovário de Feto</h3>
+                        <p>Chefe da Bagaça toda</p>
+                        <small>"Eu mando, eles obedecem"</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doe Agora -->
+    <section id="doe-agora">
+        <div class="container">
+            <h2>Doe Agora</h2>
+            <div class="form-container">
+                <form>
+                    <div class="form-group">
+                        <label for="nome">Nome Completo *</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="valor">Valor da Doação (R$) *</label>
+                        <input type="number" id="valor" name="valor" placeholder="0,00" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pagamento">Método de Pagamento *</label>
+                        <select id="pagamento" name="pagamento" required>
+                            <option value="">Selecione um método</option>
+                            <option value="pix">PIX</option>
+                            <option value="cartao">Cartão de Crédito</option>
+                            <option value="boleto">Boleto</option>
+                        </select>
+                    </div>
+                    <button type="submit">Enviar Doação</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contato">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>📍 Localização</h4>
+                <p>Rua das Flores, 123<br>Bairro Centro<br>São Paulo, SP 01234-567<br>Brasil</p>
+            </div>
+            <div class="footer-section">
+                <h4>📧 Contato</h4>
+                <p>
+                    <strong>E-mail:</strong><br>
+                    contato@pataamiga.org.br<br><br>
+                    <strong>Telefone:</strong><br>
+                    (11) 94900-5340
+                </p>
+            </div>
+            <div class="footer-section">
+                <h4>🤝 Siga-nos</h4>
+                <p>
+                    Facebook: @PataAmiga<br>
+                    Instagram: @PataAmiga<br>
+                    Twitter: @PataAmiga_ONG
+                </p>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <p>&copy; 2025 PataAmiga - ONG de Adoção de Animais. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
